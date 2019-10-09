@@ -4,9 +4,9 @@
 	session_start();
 	require_once "conexion.php";
 
-	$conexion=conexion();
+	    $conexion=conexion();
 
-		$usuario=$_POST['usuario'];
+	    $usuario=$_POST['usuario'];
 		$password=sha1($_POST['password']);
 
 		$sql="SELECT * FROM usuarios WHERE usuario='$usuario' AND password='$password'";
@@ -21,6 +21,5 @@
 		}else{
 			echo 0;
 		}
-
 		
  ?>

@@ -12,7 +12,7 @@ $domicilio= $_POST['domicilio'];
 $email= $_POST['email'];
 
 //Se procede la accion de modificar en cada unos de los campos
-$query="UPDATE usuarios SET nombre='$nombre', cuil='$cuil', fecha=$fecha, domicilio='$domicilio', email='$email' WHERE id='$id'";
+$query="UPDATE usuarios SET nombre='$nombre', cuil='$cuil', fecha='$fecha', domicilio='$domicilio', email='$email' WHERE id='$id'";
 $resultado= $conexion->query($query);
 
 //Una vez realizado la modificacion, se direcciona a la lista de alumnos actualizada

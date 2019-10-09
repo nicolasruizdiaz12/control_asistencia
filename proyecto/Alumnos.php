@@ -33,21 +33,18 @@
 
   <!-- Funcion de confirmacion para eliminar datos de la lista por js -->
 <script type="text/javascript">
-function  ConfirmDelete() 
-{ 
-	var respuesta = confirm("¿Desea Eliminar Alumno?");
 
-	if (respuesta == true)
-	{
-		return true;
+function Confirmation() {
+ 
+	if (confirm('Esta seguro de eliminar el registro?')==true) {
+	    alert('El registro ha sido eliminado correctamente!!!');
+	    return true;
+	}else{
+	    alert('Cancelo la eliminacion');
+	    return false;
 	}
-	else
-	{
-		return false;
-	}
-
-
 }
+
 </script>
 
 <body id="page-top">
@@ -362,7 +359,7 @@ function  ConfirmDelete()
                                             <i class="far fa-edit fa-lg" style="color: #51cf66;"></i>
                                           </a>
                                           <a href="Lista_Alumnos/eliminar.php?id='.$row['id'].'">
-											<i class="far fa-trash-alt fa-lg" style="color: #ff6b6b <input type="button" onclick="ConfirmDelete()" /;"></input></i>
+											<i class="far fa-trash-alt fa-lg" style="color: #ff6b6b <input type="button" onclick="return Confirmation()" /;"></input></i>
                                           </a>
                                       </td>';
                                 /*<td><a href="Lista_Alumnos/eliminar.php?ID=<?php echo $row['ID'] ?>"><button type="button" class="btn btn-danger">Eliminar</button></a></td>*/

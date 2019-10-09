@@ -45,7 +45,7 @@
   </table>
 </div>
 
-<div><input type="submit" value="Guardar Registro" onclick="contarFilas()"/></div>
+<div><input type="submit" value="Guardar Registro"></div>
 
 </body>
 </html>
