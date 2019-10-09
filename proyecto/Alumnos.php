@@ -35,7 +35,7 @@
 <script type="text/javascript">
 function  ConfirmDelete() 
 { 
-	var respuesta = confirm("¿Desea Elimanar Alumno?");
+	var respuesta = confirm("¿Desea Eliminar Alumno?");
 
 	if (respuesta == true)
 	{

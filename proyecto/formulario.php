@@ -307,7 +307,7 @@
               </div>
               <div class="card-body">
                   <div class="table-responsive">
-                     <form action="Lista_Alumnos/guardar.php" method="POST">
+                     <form action="Lista_Alumnos/guardar.php" method="POST" id="frmRegistro">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 						   <tbody>
                                 <tr class="bg-success">
@@ -326,7 +326,7 @@
                             </tbody>
                          </table> 
                           <br>
-                          <center><input class="btn-primary align-items-center" type="submit" value="Guardar Alumno"></center>  
+                          <center><input class="btn-primary align-items-center" type="submit"  id="guardarAlumno" value="Guardar Alumno"></center>  
                          </form>
                      </div>
               </div>

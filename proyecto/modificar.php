@@ -309,33 +309,31 @@
                   <div class="table-responsive">
                       <?php
 
-                     $id=$_REQUEST['ID'];
+                     $id=$_REQUEST['id'];
 
                      include("Lista_Alumnos/conexion.php");
 
-                       $query="SELECT * FROM alumno WHERE id='$id'";
+                       $query="SELECT * FROM usuarios WHERE id='$id'";
                      $resultado= $conexion ->query($query);
                      $row=$resultado->fetch_assoc();
                      ?>
-                  <form  action="Lista_Alumnos/modificar_proceso.php?ID=<?php echo $row['ID'] ?>" method="POST">
+                  <form  action="Lista_Alumnos/modificar_proceso.php?id=<?php echo $row['id'] ?>" method="POST">
                 <table>
                     <tbody>
 						<tr class="bg-success">                        
-                          <th style="color:#FFFFFF">Apellido y Nombre</th>
-                          <th style="color:#FFFFFF">D.N.I</th>
-                          <th style="color:#FFFFFF">Email</th>
-                          <th style="color:#FFFFFF">Domicilio</th>
-                          <th style="color:#FFFFFF">Telefono</th>
-                          <th style="color:#FFFFFF">F_Nacimiento</th>
+						     <td style="color:#FFFFFF">Apellido y Nombre</td>
+                             <td style="color:#FFFFFF">CUIL</td>
+                             <td style="color:#FFFFFF">Fecha Nac</td>
+                             <td style="color:#FFFFFF">Domicilio</td>
+                             <td style="color:#FFFFFF">Email</td>
 						</tr>
 						
 						<tr>
-						  <td><input type="text" required name="nombre" id="nombre" placeholder="Apellido y Nombre..." value="<?php echo $row['Nombre_Apellido']; ?>"/> </td>
-                          <td> <input type="varchar" required name="dni" id="dni" placeholder="D.N.I..." value="<?php echo $row['DNI']; ?>"/></td>
-                          <td><input type="email" required name="email" id="email" placeholder="Email..." value="<?php echo $row['Email']; ?>"/></td> 
-                          <td><input type="text" required name="domicilio" id="domicilio" placeholder="Domicilio..." value="<?php echo $row['Domicilio']; ?>"/></td>
-                          <td><input type="number" required name="telefono" id="telefono" placeholder="Telefono..." value="<?php echo $row['Telefono']; ?>"/>  </td>   
-                          <td> <input type="date" required name="fecha" id="fecha" placeholder="Fecha Nacimiento..." value="<?php echo $row['F_Nacimiento']; ?>"/> </td> 
+						  <td><input type="text" required name="nombre" id="nombre" placeholder="Apellido y Nombre..." value="<?php echo $row['nombre']; ?>"/> </td>
+                          <td> <input type="varchar" required name="cuil" id="cuil" placeholder="CUIL..." value="<?php echo $row['cuil']; ?>"/></td>
+                          <td><input type="date" required name="fecha" id="fecha" placeholder="Fecha Nac..." value="<?php echo $row['fecha']; ?>"/></td> 
+                          <td><input type="text" required name="domicilio" id="domicilio" placeholder="Domicilio..." value="<?php echo $row['domicilio']; ?>"/></td>
+                          <td><input type="email" required name="email" id="email" placeholder="Email..." value="<?php echo $row['email']; ?>"/></td> 
 						</tr>
                     </tbody>
                  </table> 

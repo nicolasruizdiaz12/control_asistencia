@@ -11,23 +11,21 @@ if(isset($_POST['generar_informe']))
     //header('Content-Type:text/csv; charset=utf-8');
     //header('Content-Disposition: attachment; filename="Registro de Asistencia.csv"');
     header('Content-type: application/vnd.ms-excel;charset=latin1');
-    header('Content-Disposition: attachment; filename="Registro de Asistencia.xls"');
+    header('Content-Disposition: attachment; filename="Lista de Alumnos.xls"');
 
     //Salida del archivo 
     $salida=fopen('php://output', 'w');
     //Encabezado
-    fputcsv($salida, array('ID', 'Nombre_Apellido', 'DNI',   'Email',   'Domicilio',   'Telefono',   'F_Nacimiento'),chr(9));
+    fputcsv($salida, array('Nombre y Apellido', 'CUIL',   'Fecha Nac',   'Domicilio',   'Email'),chr(9));
     //Query para crear el reporte
-    $reporteCsv=$conexion->query("SELECT * FROM alumno WHERE F_Nacimiento BETWEEN '$fecha1' AND '$fecha2' ORDER BY ID");
+    $reporteCsv=$conexion->query("SELECT * FROM usuarios WHERE fecha BETWEEN '$fecha1' AND '$fecha2' ORDER BY id");
     while($filaR = $reporteCsv->fetch_assoc()){
 
-        fputcsv($salida, array($filaR['ID'],
-        $filaR['Nombre_Apellido'],
-        $filaR['DNI'],
-        $filaR['Email'],
-        $filaR['Domicilio'],
-        $filaR['Telefono'],
-        $filaR['F_Nacimiento']),chr(9));
+        fputcsv($salida, array($filaR['nombre'],
+        $filaR['cuil'],
+        $filaR['fecha'],
+        $filaR['domicilio'],
+        $filaR['email']),chr(9));
     }
     
 }

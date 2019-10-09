@@ -3,17 +3,16 @@
 include("conexion.php");
 
 //Se selecciona el id del alumno que se desea modificar
-$id=$_REQUEST['ID'];
+$id=$_REQUEST['id'];
 
 $nombre= $_POST['nombre'];
-$dni= $_POST['dni'];
-$email= $_POST['email'];
-$domicilio= $_POST['domicilio'];
-$telefono= $_POST['telefono'];
+$cuil= $_POST['cuil'];
 $fecha= $_POST['fecha'];
+$domicilio= $_POST['domicilio'];
+$email= $_POST['email'];
 
 //Se procede la accion de modificar en cada unos de los campos
-$query="UPDATE alumno SET Nombre_Apellido='$nombre', DNI='$dni', Email='$email', Domicilio='$domicilio', Telefono='$telefono', F_Nacimiento='$fecha' WHERE ID='$id'";
+$query="UPDATE usuarios SET nombre='$nombre', cuil='$cuil', fecha=$fecha, domicilio='$domicilio', email='$email' WHERE id='$id'";
 $resultado= $conexion->query($query);
 
 //Una vez realizado la modificacion, se direcciona a la lista de alumnos actualizada

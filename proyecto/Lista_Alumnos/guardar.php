@@ -14,6 +14,7 @@ $query="INSERT INTO usuarios(nombre, cuil, fecha, domicilio, email) VALUES('$nom
 $resultado= $conexion->query($query);
 
 if($resultado){
+    echo "<script type='text/javascript'> alert('Agregado con Exito') </script>";
     header("location: ../Alumnos.php");
 }
 else{

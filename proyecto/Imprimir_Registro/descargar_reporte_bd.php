@@ -3,7 +3,7 @@
 
 include('conexion.php');
 ///Consulta a la BD 
-$alumno="SELECT * FROM alumno order by ID";
+$alumno="SELECT * FROM usuarios order by id";
 $resAlumnos=$conexion->query($alumno);
 
 ?>
@@ -13,52 +13,53 @@ $resAlumnos=$conexion->query($alumno);
         <title>Desacargar Excel</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximun-scale=1"/>
-        <link href="css/estilos.css" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     </head>
     <body>
         <header>
             <div class="alert alert-info">
-                <h2>Descargar Registros de Asistencias</h2>
+                <h2>Descargar Lista de Alumnos</h2>
         </div>
     </header>
     <section>
-        <table class="table">
+        <table class="table table-bordered">
             <tr class="bg-primary">
-            <th>Id</th>
             <th>Apellido y Nombre</th>
-            <th>D.N.I</th>
-            <th>Email</th>
+            <th>CUIL</th>
+            <th>Fecha Nac</th>
             <th>Domicilio</th>
-            <th>Telefono</th>
-            <th>F_Nacimiento</th>
+            <th>Email</th>
     </tr>
     <?php
     while ($registroAlumnos = $resAlumnos ->fetch_array(MYSQLI_BOTH)){
 
         echo'<tr>
-            <td>'.$registroAlumnos['ID'].'</td>
-            <td>'.$registroAlumnos['Nombre_Apellido'].'</td>
-            <td>'.$registroAlumnos['DNI'].'</td>
-            <td>'.$registroAlumnos['Email'].'</td>
-            <td>'.$registroAlumnos['Domicilio'].'</td>
-            <td>'.$registroAlumnos['Telefono'].'</td>
-            <td>'.$registroAlumnos['F_Nacimiento'].'</td>
+            <td class="success">'.$registroAlumnos['nombre'].'</td>
+            <td>'.$registroAlumnos['cuil'].'</td>
+            <td>'.$registroAlumnos['fecha'].'</td>
+            <td>'.$registroAlumnos['domicilio'].'</td>
+            <td>'.$registroAlumnos['email'].'</td>
             </tr>';
     }
     ?>
     </table>
     </section>
 
-    <div>
+    <div align="center" >
+    <div class="center-block">
     <form method="post" class="form" action="reporte.php">
     <p>Desde</p>
     <input type="date" name="fecha1">
+    <br>
     <p>Hasta</p>
     <input type="date" name="fecha2">
-    <input type="submit" name="generar_informe">
+    <br><br>
+    <input type="submit" class="btn btn-success" name="generar_informe" >
     </form>
     </div>
+    </div>
+
+   
 
     </body>
     </html>
