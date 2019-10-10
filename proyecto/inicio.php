@@ -119,7 +119,7 @@
 
   <!-- Nav Item - Charts -->
   <li class="nav-item active">
-	<a class="nav-link" target="_blank"href="Lista_Alumnos/registros.php">
+	<a class="nav-link" target="_blank"href="registros.php">
     <i class="far fa-address-card"></i>
 	  <span>Registro Asistencia</span></a>
   </li>
@@ -356,7 +356,7 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><a target="_blank" href="Lista_Alumnos/registros.php">Registro</a></div>
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><a target="_blank" href="registros.php">Registro</a></div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">Asistencia</div>
                     </div>
                     <div class="col-auto">

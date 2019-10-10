@@ -3,7 +3,7 @@
 $host="localhost";
 $usuario="root";
 $contraseña="";
-$base="loginposta";
+$base="registro_asistencia";
 
 $conexion= new mysqli($host, $usuario, $contraseña, $base);
 if ($conexion -> connect_errno){

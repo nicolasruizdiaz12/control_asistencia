@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Registro</title>
-  <link rel="stylesheet" type="text/css" href="css/estiloReloj.css">
+  <link rel="stylesheet" type="text/css" href="Lista_Alumnos/css/estiloReloj.css">
   <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500" rel="stylesheet">
 </head>
 <body>
@@ -40,6 +40,18 @@
   $fechahoy= date("Y-m-d");
   ?>
 <div>
+<div>
+<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+		<div class="input-group">
+		  <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2">
+		  <div class="input-group-append">
+			<button class="btn btn-primary" type="button">
+			  <i class="fas fa-search fa-sm"></i>
+			</button>
+		  </div>
+		</div>
+	  </form>
+</div>
 <br>
   <table class="table" id="tabla">
     <tbody>
@@ -52,7 +64,7 @@
       </tr>
             <?php
             
-               include("conexion.php");
+               include("Lista_Alumnos/conexion.php");
                $query="SELECT * FROM usuarios";
                $resultado= $conexion ->query($query);
                while($row=$resultado->fetch_assoc()){
@@ -71,4 +83,5 @@
 </body>
 </html>
 
-<script type="text/javascript" src="js/hora.js"></script>
+<script type="text/javascript" src="Lista_Alumnos/js/hora.js"></script>
+<script type="text/javascript" src="Lista_Alumnos/js/filtro.js"></script>

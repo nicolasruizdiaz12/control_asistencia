@@ -134,7 +134,7 @@ function Confirmation() {
 
   <!-- Nav Item - Charts -->
   <li class="nav-item active">
-	<a class="nav-link" href="Lista_Alumnos/registros.php">
+	<a class="nav-link" href="registros.php">
     <i class="far fa-address-card"></i>
 	  <span>Registro Asistencia</span></a>
   </li>

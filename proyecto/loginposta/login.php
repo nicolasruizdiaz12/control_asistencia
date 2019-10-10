@@ -28,7 +28,13 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-4"></div>
+		<div class="col-sm-4">
+			<?php 
+				echo 'IP: '.$_SERVER['REMOTE_ADDR'].' HOST: '.$_SERVER['REMOTE_HOST'].'<br>';
+				$salida = explode(' ',shell_exec('arp -a '.$_SERVER['REMOTE_ADDR'])); 
+				echo 'MAC: '.$salida[33];2255
+			?>
+		</div>
 	</div>
 </div>
 </body>
