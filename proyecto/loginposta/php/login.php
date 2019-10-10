@@ -6,8 +6,8 @@
 
 	    $conexion=conexion();
 
-	    $usuario=$_POST['usuario'];
-		$password=sha1($_POST['password']);
+	   $usuario=$_POST['usuario'];
+	   $password=sha1($_POST['password']);
 
 		$sql="SELECT * FROM usuarios WHERE usuario='$usuario' AND password='$password'";
 		$result=mysqli_query($conexion,$sql);
