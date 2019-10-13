@@ -1,0 +1,77 @@
+body{
+    background: url(../img/background.jpg);
+}
+
+header{
+    margin-top: 4%;
+    margin-right: 2%;
+    margin-left: 2%;
+    text-align: center;
+}
+
+section{
+    margin-right: 2%;
+    margin-left: 2%;
+}
+
+.pad-basic{
+    padding: .5%;
+}
+
+.no-btm{
+    margin-bottom: 0%;
+}
+
+.btn-der{
+    text-align: right;
+}
+
+
+#tabla {
+    width: 35%;
+    height: 200px;
+    margin: 0 auto;
+    border: black 1px solid;
+}
+
+#boton{
+    margin-left: 46%;
+}
+
+.text {
+    font-size:21px;
+    font-family:helvetica;
+    font-weight:bold;
+    color:#ce3131;
+    text-transform:uppercase;
+  }
+  .parpadea {
+    
+    animation-name: parpadeo;
+    animation-duration: 7s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  
+    -webkit-animation-name:parpadeo;
+    -webkit-animation-duration: 7s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+  }
+  
+  @-moz-keyframes parpadeo{  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+  }
+  
+  @-webkit-keyframes parpadeo {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+     100% { opacity: 1.0; }
+  }
+  
+  @keyframes parpadeo {  
+    0% { opacity: 1.0; }
+     50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+  }

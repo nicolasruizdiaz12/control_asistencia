@@ -9,16 +9,18 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Home-Alumno</title>
+	<title>Lista Alumnos</title>
 
 	<!-- Custom fonts for this template-->
 	<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="mac/estilo.css">
 	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
 	<!-- Custom styles for this template-->
 	<link href="css/sb-admin-2.min.css" rel="stylesheet">
-
+	<link rel="stylesheet" href="mac/css/estilos.css">
+	<link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+	<script src="js/4163d1ab35.js"></script>
+	<!-- <script src="https://kit.fontawesome.com/4163d1ab35.js" crossorigin="anonymous"></script> -->
 </head>
 
 <body id="page-top">
@@ -236,134 +238,78 @@
 				</nav>
 				<!-- End of Topbar -->
 
+				<!-- Page Heading -->
+				<div style="text-align: center;">
+					<h1 class="h3 mb-0 text-gray-800">Especialización Tecnica en Desarrollo de Software</h1>
+				</div> <br><br>
+
 				<!-- Begin Page Content -->
-				<div class="container-fluid">
 
-					<!-- Page Heading -->
-					<div class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">Especialización Tecnica en Desarrollo de Software</h1>
-					</div>
-
-					<!-- Content Row -->
-					<div class="row">
-
-						<!-- Earnings (Monthly) Card Example -->
-
-						<div class="col-xl-3 col-md-6 mb-4">
-							<div class="card border-left-primary shadow h-100 py-2">
-								<div class="card-body">
-									<div class="row no-gutters align-items-center">
-										<div class="col mr-2">
-											<div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><a href="#">Fustificar</a></div>
-											<div class="h5 mb-0 font-weight-bold text-gray-800">Inasistencia</div>
-										</div>
-										<div class="col-auto">
-											<i class="fas fa-user-graduate fa-2x" style="color: #008000;"></i>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xl-3 col-md-6 mb-4">
-							<div class="card border-left-primary shadow h-100 py-2">
-								<div class="card-body">
-									<div class="row no-gutters align-items-center">
-										<div class="col mr-2">
-											<div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><a href="#"></a>Marcar Asistencia</div>
-											<div class="h5 mb-0 font-weight-bold text-gray-800">fecha</div>
-										</div>
-										<div class="col-auto">
-											<i class="fab fa-algolia fa-2x" style="color: #008000;"></i>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Earnings (Monthly) Card Example -->
-						<div class="col-xl-3 col-md-6 mb-4">
-							<div class="card border-left-primary shadow h-100 py-2">
-								<div class="card-body">
-									<div class="row no-gutters align-items-center">
-										<div class="col mr-2">
-											<div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><a target="_blank" href="https://classroom.google.com">Classroom</a></div>
-											<div class="h5 mb-0 font-weight-bold text-gray-800">Clases</div>
-										</div>
-										<div class="col-auto">
-											<i class="far fa-address-card fa-2x" style="color: #008000;"></i>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Pending Requests Card Example -->
-						<div class="col-xl-3 col-md-6 mb-4">
-							<div class="card border-left-primary shadow h-100 py-2">
-								<div class="card-body">
-									<div class="row no-gutters align-items-center">
-										<div class="col mr-2">
-											<div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><a target="_blank" href="img/horarios.pdf">Horarios</a></div>
-											<div class="h5 mb-0 font-weight-bold text-gray-800">2019</div>
-										</div>
-										<div class="col-auto">
-											<i class="fab fa-algolia fa-2x" style="color: #008000;"></i>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- /.container-fluid -->
-
-					</div>
-					<!-- /.container-fluid -->
-
+				<div>
+					<form action="mac/guardar.php" method="POST">
+						<table id="tabla" cellspacing="0" style="text-align:center;">
+							<tbody>
+								<tr class="bg-success">
+									<th COLSPAN="2" style="color:#FFFFFF">Registrar Dispositivos</th>
+								</tr>
+								<tr>
+									<td>Computadora: </td>
+									<td><input type="text" size="30" required name="mac_compu" id="mac_compu" placeholder="    Digite Mac..." value="" /> </td>
+								</tr>
+								<tr>
+									<td>Telefono/Movil: </td>
+									<td> <input type="varchar" size="30" required name="mac_celu" id="mac_celu" placeholder="    Digite Mac..."></td>
+								</tr>
+							</tbody>
+						</table>
+						<br>
+						<input class="btn-primary align-items-center" type="submit" value="Guardar" id="boton">
+					</form>
 				</div>
-				<!-- End of Main Content -->
-
-				<!-- Footer -->
-				<footer class="sticky-footer bg-white">
-					<div class="container my-auto">
-						<div class="copyright text-center my-auto">
-							<span>Ruiz Diaz Nico &copy; Gil Yami 2019</span>
-						</div>
-					</div>
-				</footer>
-				<!-- End of Footer -->
+				<br><br>
+				<div style="text-align: center;">
+					<span class="parpadea text"><strong>¡Debes registrar la dirección MAC de sus dispositivos, <br>
+							con el cuál accederás a dar su asistencia. Gracias!</strong>
+				</div>
 
 			</div>
-			<!-- End of Content Wrapper -->
+			<!-- End of Main Content -->
+
+			<!-- Footer -->
+			<footer class="sticky-footer bg-white">
+				<div class="container my-auto">
+					<div class="copyright text-center my-auto">
+						<span>Ruiz Diaz Nico &copy; Gil Yami 2019</span>
+					</div>
+				</div>
+			</footer>
+			<!-- End of Footer -->
 
 		</div>
-		<!-- End of Page Wrapper -->
+		<!-- End of Content Wrapper -->
 
-		<!-- Scroll to Top Button-->
-		<a class="scroll-to-top rounded" href="#page-top">
-			<i class="fas fa-angle-up"></i>
-		</a>
+	</div>
+	<!-- End of Page Wrapper -->
 
-		<!-- Logout Modal-->
-		<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Desea cerrar sección?</h5>
-						<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">×</span>
-						</button>
-					</div>
-					<div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.</div>
-					<div class="modal-footer">
-						<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-						<a class="btn btn-primary" href="loginposta/login.php">Cerrar sesión</a>
-					</div>
+
+	<!-- Logout Modal-->
+	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Desea cerrar sección?</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+					<a class="btn btn-primary" href="../index.php">Cerrar sesión</a>
 				</div>
 			</div>
 		</div>
 	</div>
-
 
 
 	<!-- Bootstrap core JavaScript-->
@@ -375,6 +321,13 @@
 
 	<!-- Custom scripts for all pages-->
 	<script src="js/sb-admin-2.min.js"></script>
+
+	<!-- Page level plugins -->
+	<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+	<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+	<!-- Page level custom scripts -->
+	<script src="js/demo/datatables-demo.js"></script>
 
 </body>
 

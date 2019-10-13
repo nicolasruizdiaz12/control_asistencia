@@ -358,7 +358,7 @@ function Confirmation() {
                                 echo '<td align="center"><a href="modificar.php?id='.$row['id'].'">
                                             <i class="far fa-edit fa-lg" style="color: #51cf66;"></i>
                                           </a>
-                                          <a href="Lista_Alumnos/eliminar.php?id='.$row['id'].'">
+                                          <a href="Lista_Alumnos/eliminar.php?id='.$row['id_alumno'].'">
 											<i class="far fa-trash-alt fa-lg" style="color: #ff6b6b <input type="button" onclick="return Confirmation()" /;"></input></i>
                                           </a>
                                       </td>';
