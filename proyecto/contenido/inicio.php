@@ -373,8 +373,8 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><a target="_blank" href="#">Calculadora</a></div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">2x2</div>
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><a target="_blank" href="#">Cargar</a></div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">Notas</div>
                     </div>
                     <div class="col-auto">
 					<i class="fas fa-calculator fa-2x" style="color: #008000;" ></i>

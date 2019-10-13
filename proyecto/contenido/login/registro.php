@@ -2,6 +2,8 @@
 <html>
 <head>
 	<title>Registro</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maxium-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="ccs/../../estilo.css"> 
 	<?php require_once "scripts.php"; ?>
 	
 </head>
@@ -86,7 +88,7 @@ console.log(cadena)
 						success:function(r){
 
 							if(r==2){
-								alertify.alert("Este usuario ya existe, prueba con otro :)");
+								alertify.alert("Este usuario ya existe, prueba con otro");
 							}
 							else if(r==1){
 								$('#frmRegistro')[0].reset();
