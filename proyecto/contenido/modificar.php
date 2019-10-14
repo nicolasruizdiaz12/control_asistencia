@@ -302,7 +302,7 @@
 
 					<div class="card shadow mb-4">
 						<div class="card-header py-3">
-							<h6 class="m-0 font-weight-bold text-primary">Estudiantes</h6>
+							<h6 class="m-0 font-weight-bold text-primary" style="text-align: center;">Editar Datos del Alumno</h6>
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
@@ -316,13 +316,13 @@
 								$resultado = $conexion->query($query);
 								$row = $resultado->fetch_assoc();
 								?>
-								<form action="Lista_Alumnos/modificar_proceso.php?id=<?php echo $row['id_alumno'] ?>" method="POST">
-									<table>
-										<tbody>
+								<form action="Lista_Alumnos/modificar_proceso.php?id_alumno=<?php echo $row['id_alumno'] ?>" method="POST">
+									<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+										<tbody style="text-align: center;">
 											<tr class="bg-success">
 												<td style="color:#FFFFFF">Apellido y Nombre</td>
 												<td style="color:#FFFFFF">CUIL</td>
-												<td style="color:#FFFFFF">Fecha Nac</td>
+												<td style="color:#FFFFFF">Fecha Nacacimiento</td>
 												<td style="color:#FFFFFF">Domicilio</td>
 												<td style="color:#FFFFFF">Email</td>
 											</tr>
@@ -337,7 +337,7 @@
 										</tbody>
 									</table>
 									<br>
-									<center><input class="btn-primary align-items-center" type="submit" value="Guardar Alumno"></center>
+									<center><input class="btn-primary" type="submit" value="Guardar Edición"></center>
 								</form>
 							</div>
 						</div>

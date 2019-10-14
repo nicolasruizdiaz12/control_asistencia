@@ -3,7 +3,7 @@
 
 include('conexion.php');
 ///Consulta a la BD 
-$alumno="SELECT * FROM usuarios order by id";
+$alumno="SELECT * FROM usuarios order by id_alumno";
 $resAlumnos=$conexion->query($alumno);
 
 ?>
@@ -18,7 +18,7 @@ $resAlumnos=$conexion->query($alumno);
     <body>
         <header>
             <div class="alert alert-info">
-                <h2>Descargar Lista de Alumnos</h2>
+                <h2 style="text-align: center;">Descargar Lista de Alumnos</h2>
         </div>
     </header>
     <section>

@@ -18,7 +18,7 @@ if(isset($_POST['generar_informe']))
     //Encabezado
     fputcsv($salida, array('Nombre y Apellido', 'CUIL',   'Fecha Nac',   'Domicilio',   'Email'),chr(9));
     //Query para crear el reporte
-    $reporteCsv=$conexion->query("SELECT * FROM usuarios WHERE fecha BETWEEN '$fecha1' AND '$fecha2' ORDER BY id");
+    $reporteCsv=$conexion->query("SELECT * FROM usuarios WHERE fecha BETWEEN '$fecha1' AND '$fecha2' ORDER BY id_alumno");
     while($filaR = $reporteCsv->fetch_assoc()){
 
         fputcsv($salida, array($filaR['nombre'],
@@ -29,6 +29,3 @@ if(isset($_POST['generar_informe']))
     }
     
 }
-
-
-?>
