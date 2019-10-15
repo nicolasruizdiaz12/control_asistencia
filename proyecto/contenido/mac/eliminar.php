@@ -3,10 +3,10 @@
 include("conexion.php");
 
 //Se selecciona el id del alumno que se desea eliminar
-$id=$_REQUEST['id'];
+$id_mac=$_REQUEST['id_mac'];
 
 //Se ejecuta la funcion de eliminar el id seleccionado
-$query="DELETE FROM dispositivos WHERE id='$id'";
+$query="DELETE FROM mac_dispositivo WHERE id_mac='$id_mac'";
 mysqli_close($conexion);
 $resultado= $conexion->query($query);
 

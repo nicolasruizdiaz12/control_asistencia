@@ -14,14 +14,14 @@
 		if(buscaUserRepetido($usuario,$password,$conexion)==1){
 			echo 2;
 		}else{
-			$sql="INSERT into usuarios (nombre,cuil,fecha,domicilio,email,usuario,password)
+			$sql="INSERT into usuario (nombre,cuil,fecha,domicilio,email,usuario,password)
 				values ('$nombre','$cuil','$fecha','$domicilio','$email','$usuario','$password')";
 			echo $result=mysqli_query($conexion,$sql);
 		}
 
 
 		function buscaUserRepetido($usuario,$password,$conexion){
-			$sql="SELECT * from usuarios 
+			$sql="SELECT * from usuario 
 				where usuario='$usuario'";
 			$result=mysqli_query($conexion,$sql);
 

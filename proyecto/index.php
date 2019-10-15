@@ -16,7 +16,7 @@
 			<div class="col-sm-4"></div>
 			<div class="col-sm-4">
 				<div class="panel panel-asistencia">
-					<div class="panel panel-heading" style="background-color:rgba(35, 38, 56, 0.829)">CONTROL DE INASISTENCIA</div>
+					<div class="panel panel-heading" style="background-color:rgba(35, 38, 56, 0.829)">CONTROL DE ASISTENCIA</div>
 					<div class="panel panel-body">
 						<div style="text-align: center;">
 							<img src="contenido/login/img/logo.png" width="100%" class="img-rounded">
@@ -36,7 +36,7 @@
 				<?php
 				echo 'IP: ' . $_SERVER['REMOTE_ADDR'] . ' HOST: ' . $_SERVER['REMOTE_HOST'] . '<br>';
 				$salida = explode(' ', shell_exec('arp -a ' . $_SERVER['REMOTE_ADDR']));
-				echo 'MAC: ' . $salida[33];
+				echo 'MAC: ' . $salida[35];
 				2255
 				?>
 			</div>

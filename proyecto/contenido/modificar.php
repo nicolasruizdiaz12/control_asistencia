@@ -308,15 +308,15 @@
 							<div class="table-responsive">
 								<?php
 
-								$id_alumno = $_REQUEST['id_alumno'];
+								$id_alumno = $_REQUEST['id_usuario'];
 
 								include("Lista_Alumnos/conexion.php");
 
-								$query = "SELECT * FROM usuarios WHERE id_alumno='$id_alumno'";
+								$query = "SELECT * FROM usuario WHERE id_usuario='$id_usuario'";
 								$resultado = $conexion->query($query);
 								$row = $resultado->fetch_assoc();
 								?>
-								<form action="Lista_Alumnos/modificar_proceso.php?id_alumno=<?php echo $row['id_alumno'] ?>" method="POST">
+								<form action="Lista_Alumnos/modificar_proceso.php?id_usuario=<?php echo $row['id_usuario'] ?>" method="POST">
 									<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 										<tbody style="text-align: center;">
 											<tr class="bg-success">

@@ -1,9 +1,10 @@
 <?php
 session_start();
 
-$usuario = $_SESSION['username'];
+$usuario = $_SESSION['nombre'];
+$id_usuario = $_SESSION['id_usuario'];
 
-if (isset($_SESSION['user'])) {
+if (isset($_SESSION['usuario'])) {
 
 	?>
 

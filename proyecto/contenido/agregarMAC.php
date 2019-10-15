@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+$usuario = $_SESSION['nombre'];
+$id_usuario = $_SESSION['id_usuario'];
+
+if (isset($_SESSION['usuario'])) {
+
+	?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -208,7 +217,7 @@
 						<!-- Nav Item - User Information -->
 						<li class="nav-item dropdown no-arrow">
 							<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<span class="mr-2 d-none d-lg-inline text-gray-600 small">Alumno</span>
+								<span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $usuario; ?></span>
 								<img src="img/instituto.png" height="60" width="60">
 							</a>
 							<!-- Dropdown - User Information -->
@@ -332,3 +341,8 @@
 </body>
 
 </html>
+<?php
+} else {
+	header("location:../inicio.php");
+}
+?>

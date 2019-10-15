@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+$usuario = $_SESSION['nombre'];
+$id_usuario = $_SESSION['id_usuario'];
+
+if (isset($_SESSION['usuario'])) {
+
+	?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +22,7 @@
 
 	<!-- Custom fonts for this template-->
 	<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="mac/estilo.css">
+	<link rel="stylesheet" href="css/parpadeo.css">
 	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
 	<!-- Custom styles for this template-->
@@ -206,7 +215,7 @@
 						<!-- Nav Item - User Information -->
 						<li class="nav-item dropdown no-arrow">
 							<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<span class="mr-2 d-none d-lg-inline text-gray-600 small">Alumno</span>
+								<span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $usuario; ?></span>
 								<img src="img/instituto.png" height="60" width="60">
 							</a>
 							<!-- Dropdown - User Information -->
@@ -258,7 +267,7 @@
 											<div class="h5 mb-0 font-weight-bold text-gray-800">Inasistencia</div>
 										</div>
 										<div class="col-auto">
-											<i class="fas fa-align-justify fa-2x" style="color: #008000;"></i> 
+											<i class="fas fa-align-justify fa-2x" style="color: #008000;"></i>
 										</div>
 									</div>
 								</div>
@@ -277,7 +286,7 @@
 												$fechahoy = date("Y-m-d");
 												?>
 											</div>
-											<div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo$fechahoy ?></div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $fechahoy ?></div>
 										</div>
 										<div class="col-auto">
 											<i class="fas fa-check fa-2x" style="color: #008000;"></i>
@@ -320,11 +329,18 @@
 								</div>
 							</div>
 						</div>
+				
 
 						<!-- /.container-fluid -->
 
 					</div>
 					<!-- /.container-fluid -->
+					<div style="text-align: center;">
+						<span class="parpadea text"><strong>¡Registrar la dirección MAC de sus dispositivos! <br>
+								<a href="http:agregarMAC.php">Click Acá</a>
+							</strong>
+					</div>
+
 
 				</div>
 				<!-- End of Main Content -->
@@ -385,3 +401,8 @@
 </body>
 
 </html>
+<?php
+} else {
+	header("location:../inicioAlumno.php");
+}
+?>
