@@ -78,7 +78,7 @@ if (isset($_SESSION['usuario'])) {
 					<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 						<div class="bg-white py-2 collapse-inner rounded">
 							<h6 class="collapse-header">Ejecucion de Alumnos:</h6>
-							<a class="collapse-item" href="formulario.php">Agregar</a>
+							<a class="collapse-item" href="agregarAlumno.php">Agregar</a>
 							<a class="collapse-item" href="Lista_Alumnos/modificar.php">Editar</a>
 							<a class="collapse-item" href="Lista_Alumnos/eliminar">Eliminar</a>
 						</div>
@@ -129,7 +129,7 @@ if (isset($_SESSION['usuario'])) {
 
 				<!-- Nav Item - Tables -->
 				<li class="nav-item">
-					<a class="nav-link" href="Alumnos.php">
+					<a class="nav-link" href="listaAlumnos.php">
 						<i class="fas fa-user-graduate" style="color: #FFFFFF;"></i>
 						<span>Alumnos</span></a>
 				</li>
@@ -326,7 +326,7 @@ if (isset($_SESSION['usuario'])) {
 									<div class="card-body">
 										<div class="row no-gutters align-items-center">
 											<div class="col mr-2">
-												<div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><a target="_blank" href="Alumnos.php">Alumnos</a></div>
+												<div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><a target="_blank" href="listaAlumnos.php">Alumnos</a></div>
 												<div class="h5 mb-0 font-weight-bold text-gray-800">Lista</div>
 											</div>
 											<div class="col-auto">

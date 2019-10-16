@@ -7,6 +7,7 @@ $id_usuario = $_SESSION['id_usuario'];
 if (isset($_SESSION['usuario'])) {
 
 	?>
+
 	<!DOCTYPE html>
 	<html lang="en">
 
@@ -54,7 +55,7 @@ if (isset($_SESSION['usuario'])) {
 			<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 				<!-- Sidebar - Brand -->
-				<a class="sidebar-brand d-flex align-items-center justify-content-center" href="inicioAlumno.php">
+				<a class="sidebar-brand d-flex align-items-center justify-content-center" href="inicio.php">
 					<div class="sidebar-brand-icon rotate-n-15">
 						<i class="far fa-grin-tongue"></i>
 					</div>
@@ -66,9 +67,9 @@ if (isset($_SESSION['usuario'])) {
 
 				<!-- Nav Item - Dashboard -->
 				<li class="nav-item active">
-					<a class="nav-link" href="dispositivos.php">
+					<a class="nav-link" href="inicio.php">
 						<i class="far fa-address-book fa-10x" style="color: #FFFFFF;"></i>
-						<span>Dirección Mac</span></a>
+						<span>Asistencia</span></a>
 				</li>
 
 				<!-- Divider -->
@@ -83,14 +84,14 @@ if (isset($_SESSION['usuario'])) {
 				<li class="nav-item">
 					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
 						<i class="fas fa-fw fa-cog" style="color: #FFFFFF;"></i>
-						<span>Sobre el Alumno</span>
+						<span>Configuraciones</span>
 					</a>
 					<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 						<div class="bg-white py-2 collapse-inner rounded">
-							<h6 class="collapse-header">Informes:</h6>
-							<a class="collapse-item" href="#">Asistencias</a>
-							<a class="collapse-item" href="#">Notas</a>
-							<a class="collapse-item" href="#">Datos Personales</a>
+							<h6 class="collapse-header">Ejecucion de Alumnos:</h6>
+							<a class="collapse-item" href="agregarAlumno.php">Agregar</a>
+							<a class="collapse-item" href="modificar.php">Editar</a>
+							<a class="collapse-item" href="Lista_Alumnos/eliminar">Eliminar</a>
 						</div>
 					</div>
 				</li>
@@ -132,10 +133,18 @@ if (isset($_SESSION['usuario'])) {
 
 				<!-- Nav Item - Charts -->
 				<li class="nav-item active">
-					<a class="nav-link" target="_blank" href="https://classroom.google.com">
+					<a class="nav-link" href="registros.php">
 						<i class="far fa-address-card"></i>
-						<span>Classroom</span></a>
+						<span>Registro Asistencia</span></a>
 				</li>
+
+				<!-- Nav Item - Tables -->
+				<li class="nav-item">
+					<a class="nav-link" href="listaAlumnos.php">
+						<i class="fas fa-user-graduate" style="color: #FFFFFF;"></i>
+						<span>Alumnos</span></a>
+				</li>
+
 				<!-- Nav Item - Pages Collapse Menu -->
 				<li class="nav-item">
 					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
@@ -145,8 +154,8 @@ if (isset($_SESSION['usuario'])) {
 					<div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
 						<div class="bg-white py-2 collapse-inner rounded">
 							<h6 class="collapse-header">Login:</h6>
-							<a class="collapse-item" href="loginposta/login.php">Login</a>
-							<a class="collapse-item" href="loginposta/registro.php">Registrar</a>
+							<a class="collapse-item" href="../index.php">Login</a>
+							<a class="collapse-item" href="login/registro.php">Registrar</a>
 						</div>
 				</li>
 
@@ -210,6 +219,55 @@ if (isset($_SESSION['usuario'])) {
 								</div>
 							</li>
 
+							<!-- Nav Item - Alerts -->
+							<li class="nav-item dropdown no-arrow mx-1">
+								<a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="fas fa-bell fa-fw"></i>
+									<!-- Counter - Alerts -->
+									<span class="badge badge-danger badge-counter">3+</span>
+								</a>
+								<!-- Dropdown - Alerts -->
+								<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+									<h6 class="dropdown-header">
+										Alertas
+									</h6>
+									<a class="dropdown-item d-flex align-items-center" href="#">
+										<div class="mr-3">
+											<div class="icon-circle bg-primary">
+												<i class="fas fa-file-alt text-white"></i>
+											</div>
+										</div>
+										<div>
+											<div class="small text-gray-500"></div>
+											<span class="font-weight-bold">Alerta1</span>
+										</div>
+									</a>
+									<a class="dropdown-item d-flex align-items-center" href="#">
+										<div class="mr-3">
+											<div class="icon-circle bg-success">
+												<i class="fas fa-donate text-white"></i>
+											</div>
+										</div>
+										<div>
+											<div class="small text-gray-500">Alerta2</div>
+											Agregar Alerta
+										</div>
+									</a>
+									<a class="dropdown-item d-flex align-items-center" href="#">
+										<div class="mr-3">
+											<div class="icon-circle bg-warning">
+												<i class="fas fa-exclamation-triangle text-white"></i>
+											</div>
+										</div>
+										<div>
+											<div class="small text-gray-500">Alerta 3</div>
+											Agregar Alerta
+										</div>
+									</a>
+									<a class="dropdown-item text-center small text-gray-500" href="#">Mostrar todas las Alertas</a>
+								</div>
+							</li>
+
 							<!-- Nav Item - Calendario -->
 
 							<li class="nav-item dropdown no-arrow mx-1">
@@ -248,7 +306,7 @@ if (isset($_SESSION['usuario'])) {
 										Registro de actividad
 									</a>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="loginposta/login.php" data-toggle="modal" data-target="#logoutModal">
+									<a class="dropdown-item" href="../index.php" data-toggle="modal" data-target="#logoutModal">
 										<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 										Salir
 									</a>
@@ -258,52 +316,58 @@ if (isset($_SESSION['usuario'])) {
 						</ul>
 
 					</nav>
-
 					<!-- End of Topbar -->
 
 					<!-- Begin Page Content -->
 					<div class="container-fluid">
 
 						<!-- Page Heading -->
-						<h1 class="h3 mb-4 text-gray-800" style="text-align:center;">Especialización Técnica en Desarrollo de Software</h1>
+						<div class="d-sm-flex align-items-center justify-content-between mb-4">
+							<h1 class="h3 mb-0 text-gray-800">Especialización Tecnica en Desarrollo de Software</h1>
+							<a target="_blank" href="Imprimir_Registro/descargar_reporte_bd.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generar Informe</a>
+						</div>
 
 						<div class="card shadow mb-4">
 							<div class="card-header py-3">
-								<h6 class="m-0 font-weight-bold text-primary">Alumno:</h6>
+								<h6 class="m-0 font-weight-bold text-primary">Lista de Alumnos <a href="agregarAlumno.php"><button type="button" class="btn btn-info">Agregar</button></a></h6>
 							</div>
 							<div class="card-body">
 								<div class="table-responsive">
-									<table class="table table-bordered" id="table" width="100%" cellspacing="0">
+									<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 										<thead>
 											<tr>
-												<td class="bg-success" COLSPAN="3" align="center" style="color:#FFFFFF">Dispositivos Registrados</td>
-											</tr>
-											<tr>
-												<th>MAC Computadora</th>
-												<th>MAC Celular</th>
+												<th>Apellido y Nombre</th>
+												<th>CUIL</th>
+												<th>Fecha Nac</th>
+												<th>Domicilio</th>
+												<th>Email</th>
 												<th>Operaciones</th>
 											</tr>
 										</thead>
 										<tbody>
 											<?php
-												include("mac/conexion.php");
-												$query = "SELECT * FROM mac_dispositivo where id_usuario='$id_usuario'";
+												include("Lista_Alumnos/conexion.php");
+												$query = "SELECT * FROM usuario";
 												$resultado = $conexion->query($query);
 												while ($row = $resultado->fetch_assoc()) {
 													echo "<tr>";
-													echo "<td>" . $row['mac_compu'] . "</td>";
-													echo "<td>" . $row['mac_celu'] . "</td>";
+													echo "<td>" . $row['nombre'] . "</td>";
+													echo "<td>" . $row['cuil'] . "</td>";
+													echo "<td>" . $row['fecha'] . "</td>";
+													echo "<td>" . $row['domicilio'] . "</td>";
+													echo "<td>" . $row['email'] . "</td>";
 													//echo '<td><span><i class="far fa-edit fa-lg" style="color: #51cf66;"></i></span></td>';
-													echo '<td align="center"><a href=mac/modificar.php?id_mac=' . $row['id_mac'] . '">
+													echo '<td align="center"><a href="modificar.php?id_usuario=' . $row['id_usuario'] . '">
                                             <i class="far fa-edit fa-lg" style="color: #51cf66;"></i>
                                           </a>
-                                          <a href="mac/eliminar.php?id_mac=' . $row['id_mac'] . '">
-											<i class="far fa-trash-alt fa-lg" style="color: #ff6b6b <input type="button" onclick="return Confirmation()" /;"></i>
+                                          <a href="Lista_Alumnos/eliminar.php?id_usuario=' . $row['id_usuario'] . '">
+											<i class="far fa-trash-alt fa-lg" style="color: #ff6b6b <input type="button" onclick="return Confirmation()" /;"></input></i>
                                           </a>
                                       </td>';
 													/*<td><a href="Lista_Alumnos/eliminar.php?ID=<?php echo $row['ID'] ?>"><button type="button" class="btn btn-danger">Eliminar</button></a></td>*/
+
+													echo "</tr>";
 												}
-												echo "<tr>";
 
 												?>
 										</tbody>
@@ -330,7 +394,7 @@ if (isset($_SESSION['usuario'])) {
 
 			</div>
 			<!-- End of Content Wrapper -->
-
+		</div>
 		</div>
 		<!-- End of Page Wrapper -->
 
@@ -344,19 +408,20 @@ if (isset($_SESSION['usuario'])) {
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+						<h5 class="modal-title" id="exampleModalLabel">¿Listo para salir?</h5>
 						<button class="close" type="button" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">×</span>
 						</button>
 					</div>
-					<div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+					<div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.</div>
 					<div class="modal-footer">
-						<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-						<a class="btn btn-primary" href="login.html">Logout</a>
+						<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+						<a class="btn btn-primary" href="../index.php">Cerrar Sección</a>
 					</div>
 				</div>
 			</div>
 		</div>
+
 
 
 
@@ -380,6 +445,7 @@ if (isset($_SESSION['usuario'])) {
 	</body>
 
 	</html>
+
 <?php
 } else {
 	header("location:../inicio.php");

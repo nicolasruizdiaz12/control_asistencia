@@ -67,7 +67,7 @@
           <?php
 
           include("Lista_Alumnos/conexion.php");
-          $query = "SELECT * FROM usuarios";
+          $query = "SELECT * FROM usuario";
           $resultado = $conexion->query($query);
           while ($row = $resultado->fetch_assoc()) {
             echo "<tr>";

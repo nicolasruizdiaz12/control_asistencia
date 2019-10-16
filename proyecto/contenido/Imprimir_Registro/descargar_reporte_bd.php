@@ -3,7 +3,7 @@
 
 include('conexion.php');
 ///Consulta a la BD 
-$alumno="SELECT * FROM usuarios order by id_alumno";
+$alumno="SELECT * FROM usuario order by id_usuario";
 $resAlumnos=$conexion->query($alumno);
 
 ?>

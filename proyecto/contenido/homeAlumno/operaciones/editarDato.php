@@ -17,7 +17,7 @@ $resultado= $conexion->query($query);
 
 //Una vez realizado la modificacion, se direcciona a la lista de alumnos actualizada
 if($resultado){
-    header("location: ../listaAlumnos.php");
+    header("location: ../../datoAlumno.php");
 }
 else{
     echo "Error de Registro";

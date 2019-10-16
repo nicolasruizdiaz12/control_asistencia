@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+$nombre = $_SESSION['nombre'];
 $usuario = $_SESSION['nombre'];
 $id_usuario = $_SESSION['id_usuario'];
 
@@ -18,18 +19,16 @@ if (isset($_SESSION['usuario'])) {
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Lista Alumnos</title>
+	<title>Home-Alumno</title>
 
 	<!-- Custom fonts for this template-->
 	<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="css/parpadeo.css">
 	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
 	<!-- Custom styles for this template-->
 	<link href="css/sb-admin-2.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="homeAlumno/mac/css/estilos.css">
-	<link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-	<script src="js/4163d1ab35.js"></script>
-	<!-- <script src="https://kit.fontawesome.com/4163d1ab35.js" crossorigin="anonymous"></script> -->
+
 </head>
 
 <body id="page-top">
@@ -77,7 +76,7 @@ if (isset($_SESSION['usuario'])) {
 						<h6 class="collapse-header">Informes:</h6>
 						<a class="collapse-item" href="#">Asistencias</a>
 						<a class="collapse-item" href="#">Notas</a>
-						<a class="collapse-item" href="#">Datos Personales</a>
+						<a class="collapse-item" href="datoAlumno.php">Datos Personales</a>
 					</div>
 				</div>
 			</li>
@@ -132,8 +131,8 @@ if (isset($_SESSION['usuario'])) {
 				<div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Login:</h6>
-						<a class="collapse-item" href="loginposta/login.php">Login</a>
-						<a class="collapse-item" href="loginposta/registro.php">Registrar</a>
+						<a class="collapse-item" href="../index.php">Login</a>
+						<a class="collapse-item" href="login/registro.php">Registrar</a>
 					</div>
 			</li>
 
@@ -235,7 +234,7 @@ if (isset($_SESSION['usuario'])) {
 									Registro de actividad
 								</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="loginposta/login.php" data-toggle="modal" data-target="#logoutModal">
+								<a class="dropdown-item" href="../index.php" data-toggle="modal" data-target="#logoutModal">
 									<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 									Salir
 								</a>
@@ -247,78 +246,98 @@ if (isset($_SESSION['usuario'])) {
 				</nav>
 				<!-- End of Topbar -->
 
-				<!-- Page Heading -->
-				<div style="text-align: center;">
-					<h1 class="h3 mb-0 text-gray-800">Especialización Tecnica en Desarrollo de Software</h1>
-				</div> <br><br>
-
 				<!-- Begin Page Content -->
+				<h1 class="h3 mb-4 text-gray-800" style="text-align:center;">Especialización Técnica en Desarrollo de Software</h1>
 
-				<div>
-					<form action="homeAlumno/mac/guardar.php" method="POST">
-						<table id="tabla" cellspacing="0" style="text-align:center;">
-							<tbody>
-								<tr class="bg-success">
-									<th COLSPAN="2" style="color:#FFFFFF">Registrar Dispositivos</th>
-								</tr>
-								<tr>
-									<td>Computadora: </td>
-									<td><input type="text" size="30" required name="mac_compu" id="mac_compu" placeholder="    Digite Mac..." value="" /> </td>
-								</tr>
-								<tr>
-									<td>Telefono/Movil: </td>
-									<td> <input type="varchar" size="30" required name="mac_celu" id="mac_celu" placeholder="    Digite Mac..."></td>
-								</tr>
-							</tbody>
-						</table>
-						<br>
-						<input class="btn-primary align-items-center" type="submit" value="Guardar" id="boton">
-					</form>
-				</div>
-				<br><br>
-				<div style="text-align: center;">
-					<span class="parpadea text"><strong>¡Debes registrar la dirección MAC de sus dispositivos, <br>
-							con el cuál accederás a dar su asistencia. Gracias!</strong>
-				</div>
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Alumno :   <?php echo $usuario; ?> </h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="table" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <td class="bg-success" COLSPAN="3" align="center" style="color:#FFFFFF">Dispositivos Registrados</td>
+                                        </tr>
+                                        <tr>
+                                            <th>MAC Computadora</th>
+                                            <th>MAC Celular</th>
+                                            <th>Operaciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                            include("homeAlumno/mac/conexion.php");
+                                            $query = "SELECT * FROM mac_dispositivo where id_usuario='$id_usuario'";
+                                            $resultado = $conexion->query($query);
+                                            while ($row = $resultado->fetch_assoc()) {
+                                                echo "<tr>";
+                                                echo "<td>" . $row['mac_compu'] . "</td>";
+                                                echo "<td>" . $row['mac_celu'] . "</td>";
+                                                //echo '<td><span><i class="far fa-edit fa-lg" style="color: #51cf66;"></i></span></td>';
+                                                echo '<td align="center"><a href=homeAlumno/mac/modificar.php?id_mac=' . $row['id_mac'] . '">
+                                                      <i class="far fa-edit fa-lg" style="color: #51cf66;"></i>
+                                                     </a>
+                                                     <a href="homeAlumno/mac/eliminar.php?id_mac=' . $row['id_mac'] . '">
+                                                     <i class="far fa-trash-alt fa-lg" style="color: #ff6b6b <input type="button" onclick="return Confirmation()" /;"></i>
+                                                     </a>
+                                                      </td>';
+                                            }
+                                            echo "<tr>";
+
+                                            ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+				<!-- End of Main Content -->
+
+				<!-- Footer -->
+				<footer class="sticky-footer bg-white">
+					<div class="container my-auto">
+						<div class="copyright text-center my-auto">
+							<span>Ruiz Diaz Nico &copy; Gil Yami 2019</span>
+						</div>
+					</div>
+				</footer>
+				<!-- End of Footer -->
 
 			</div>
-			<!-- End of Main Content -->
+			<!-- End of Content Wrapper -->
 
-			<!-- Footer -->
-			<footer class="sticky-footer bg-white">
-				<div class="container my-auto">
-					<div class="copyright text-center my-auto">
-						<span>Ruiz Diaz Nico &copy; Gil Yami 2019</span>
+		</div>
+		<!-- End of Page Wrapper -->
+
+		<!-- Scroll to Top Button-->
+		<a class="scroll-to-top rounded" href="#page-top">
+			<i class="fas fa-angle-up"></i>
+		</a>
+
+		<!-- Logout Modal-->
+		<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Desea cerrar sección?</h5>
+						<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+					<div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.</div>
+					<div class="modal-footer">
+						<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+						<a class="btn btn-primary" href="../index.php">Cerrar sesión</a>
 					</div>
 				</div>
-			</footer>
-			<!-- End of Footer -->
-
-		</div>
-		<!-- End of Content Wrapper -->
-
-	</div>
-	<!-- End of Page Wrapper -->
-
-
-	<!-- Logout Modal-->
-	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Desea cerrar sección?</h5>
-					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">×</span>
-					</button>
-				</div>
-				<div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.</div>
-				<div class="modal-footer">
-					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-					<a class="btn btn-primary" href="../index.php">Cerrar sesión</a>
-				</div>
 			</div>
 		</div>
 	</div>
+
 
 
 	<!-- Bootstrap core JavaScript-->
@@ -330,13 +349,6 @@ if (isset($_SESSION['usuario'])) {
 
 	<!-- Custom scripts for all pages-->
 	<script src="js/sb-admin-2.min.js"></script>
-
-	<!-- Page level plugins -->
-	<script src="vendor/datatables/jquery.dataTables.min.js"></script>
-	<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-	<!-- Page level custom scripts -->
-	<script src="js/demo/datatables-demo.js"></script>
 
 </body>
 

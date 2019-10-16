@@ -51,7 +51,7 @@ if (isset($_SESSION['usuario'])) {
 
 			<!-- Nav Item - Dashboard -->
 			<li class="nav-item active">
-				<a class="nav-link" href="dispositivos.php">
+				<a class="nav-link" href="direccionMac.php">
 					<i class="far fa-address-book fa-10x" style="color: #FFFFFF;"></i>
 					<span>Dirección Mac</span></a>
 			</li>
@@ -75,7 +75,7 @@ if (isset($_SESSION['usuario'])) {
 						<h6 class="collapse-header">Informes:</h6>
 						<a class="collapse-item" href="#">Asistencias</a>
 						<a class="collapse-item" href="#">Notas</a>
-						<a class="collapse-item" href="#">Datos Personales</a>
+						<a class="collapse-item" href="datoAlumno.php">Datos Personales</a>
 					</div>
 				</div>
 			</li>
@@ -130,8 +130,8 @@ if (isset($_SESSION['usuario'])) {
 				<div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Login:</h6>
-						<a class="collapse-item" href="loginposta/login.php">Login</a>
-						<a class="collapse-item" href="loginposta/registro.php">Registrar</a>
+						<a class="collapse-item" href="../index.php">Login</a>
+						<a class="collapse-item" href="login/registro.php">Registrar</a>
 					</div>
 			</li>
 
@@ -233,7 +233,7 @@ if (isset($_SESSION['usuario'])) {
 									Registro de actividad
 								</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="loginposta/login.php" data-toggle="modal" data-target="#logoutModal">
+								<a class="dropdown-item" href="../index.php" data-toggle="modal" data-target="#logoutModal">
 									<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 									Salir
 								</a>
@@ -379,7 +379,7 @@ if (isset($_SESSION['usuario'])) {
 					<div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.</div>
 					<div class="modal-footer">
 						<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-						<a class="btn btn-primary" href="loginposta/login.php">Cerrar sesión</a>
+						<a class="btn btn-primary" href="../index.php">Cerrar sesión</a>
 					</div>
 				</div>
 			</div>

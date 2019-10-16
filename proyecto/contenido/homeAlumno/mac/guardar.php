@@ -13,7 +13,7 @@ $resultado= $conexion->query($query);
 mysqli_close($conexion);
 
 if($resultado){
-    header("location: ../dispositivos.php");
+    header("location: ../../direccionMac.php");
 }
 else{
     echo "Error de Registro";

@@ -9,7 +9,10 @@
 	<?php require_once "contenido/login/scripts.php"; ?>
 </head>
 
-<body style="background-color:#0EA300;">
+<body style="background: #0EA300;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #000000, #0EA300);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #000000, #0EA300); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
 	<br><br><br>
 	<div class="container">
 		<div class="row">

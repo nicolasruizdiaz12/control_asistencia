@@ -15,7 +15,7 @@ $resultado= $conexion->query($query);
 
 if($resultado){
     echo "<script type='text/javascript'> alert('Agregado con Exito') </script>";
-    header("location: ../listaAlumnos.php");
+    header("location: ../datoAlumno.php");
 }
 else{
     echo "Error de Registro";
