@@ -15,7 +15,7 @@ mysqli_close($conexion);
 
 //Una vez realizado la modificacion, se direcciona a la lista de alumnos actualizada
 if($resultado){
-    header("location: ../dispositivos.php");
+    header("location: ../../direccionMac.php");
 }
 else{
     echo "Error de Registro";

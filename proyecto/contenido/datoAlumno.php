@@ -251,7 +251,6 @@ if (isset($_SESSION['usuario'])) {
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Especialización Tecnica en Desarrollo de Software</h1>
-    <a target="_blank" href="Imprimir_Registro/descargar_reporte_bd.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generar Informe</a>
 </div>
 
 <div class="card shadow mb-4">

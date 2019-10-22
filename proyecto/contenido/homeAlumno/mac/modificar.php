@@ -30,27 +30,33 @@
         mysqli_close($conexion);
 
         ?>
-        <form action="modificar_proceso.php?id_mac=<?php echo $row['id_mac'] ?>" method="POST">
-            <table class="table table-bordered" id="table" width="100%" cellspacing="0" >
-                <thead>
-                    <tr>
-                        <td class="bg-success" COLSPAN="2" align="center" style="color:#FFFFFF">Dispositivos</td>
-                    </tr>
-                    <tr style="text-align:center;">
-                        <th>MAC Computadora</th>
-                        <th>MAC Celular</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="text" required name="mac_compu" id="mac_compu" placeholder="MAC Compu..." value="<?php echo $row['mac_compu']; ?>" /> </td>
-                        <td> <input type="varchar" required name="mac_celu" id="mac_celu" placeholder="MAC Celular..." value="<?php echo $row['mac_celu']; ?>" /></td>
-                    </tr>
-                </tbody>
-            </table>
-            <br>
-            <input class="btn-primary align-items-center" type="submit" value="Guardar Dispositivo">
-        </form>
+        <div class="card-body">
+            <div class="table-responsive">
+                <form action="modificar_proceso.php?id_mac=<?php echo $row['id_mac'] ?>" method="POST">
+                    <table class="table table-bordered" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <td class="danger" COLSPAN="2" align="center"><b>Dispositivos</b></td>
+                            </tr>
+                            <tr class="success">
+                                <th style="text-align:center;">MAC Computadora</th>
+                                <th style="text-align:center;">MAC Celular</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="warning">
+                                <td><input type="text" required name="mac_compu" id="mac_compu" placeholder="   MAC Compu..." value="<?php echo $row['mac_compu']; ?>" /> </td>
+                                <td> <input type="varchar" required name="mac_celu" id="mac_celu" placeholder="  MAC Celular..." value="<?php echo $row['mac_celu']; ?>" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <input class="btn-primary align-items-center" type="submit" value="Guardar Dispositivo">
+                </form>
+            </div>
+
+        </div>
+
     </div>
 
 </body>
