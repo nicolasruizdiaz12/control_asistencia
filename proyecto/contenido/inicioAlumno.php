@@ -336,7 +336,7 @@ if (isset($_SESSION['usuario'])) {
 					</div>
 					<!-- /.container-fluid -->
 					<div style="text-align: center;">
-						<span class="parpadea text"><strong>¡Registrar la dirección MAC de sus dispositivos! <br>
+						<span class="parpadea text"><strong>¡Registrar Dispositivos! <br>
 								<a href="http:agregarMAC.php">Click Acá</a>
 							</strong>
 					</div>

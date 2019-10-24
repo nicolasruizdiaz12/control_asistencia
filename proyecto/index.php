@@ -30,17 +30,25 @@ background: linear-gradient(to right, #000000, #0EA300); /* W3C, IE 10+/ Edge, F
 						<label>Password</label>
 						<input type="password" id="password" class="form-control input-sm" name="">
 						<p></p>
-						<span class="btn btn-primary" id="entrarSistema">Entrar</span>
+						<span class="btn btn-primary" id="entrarSistema">Ingresar</span>
 						<a href="contenido/login/registro.php" class="btn btn-danger">Registro</a>
 					</div>
 				</div>
 			</div>
 			<div class="col-sm-4">
 				<?php
-				echo 'IP: ' . $_SERVER['REMOTE_ADDR'] . ' HOST: ' . $_SERVER['REMOTE_HOST'] . '<br>';
-				$salida = explode(' ', shell_exec('arp -a ' . $_SERVER['REMOTE_ADDR']));
-				echo 'MAC: ' . $salida[34];
-				2255
+				 echo 'IP: ' . $_SERVER['REMOTE_ADDR'] .  '<br>';
+				 $macs = explode(' ', shell_exec('arp -a ' . $_SERVER['REMOTE_ADDR']));
+				 
+				 foreach ($macs as $mac) {
+					 if (filter_var($mac, FILTER_VALIDATE_MAC) !== FALSE){
+						 $macRed = $mac;
+						 break;  
+					 }
+				 }
+
+				 echo 'MAC: ' . $macRed . '<br>';
+				
 				?>
 			</div>
 		</div>
