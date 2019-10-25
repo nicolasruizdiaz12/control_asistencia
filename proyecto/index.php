@@ -77,7 +77,7 @@ background: linear-gradient(to right, #000000, #0EA300); /* W3C, IE 10+/ Edge, F
 				data: cadena,
 				success: function(r) {
 					if (r == 1) {
-						window.location = "contenido/inicio.php";
+						window.location = "contenido/inicioAlumno.php";
 					} else {
 						alertify.alert("Fallo al entrar");
 					}
