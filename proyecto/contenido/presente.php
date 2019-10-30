@@ -1,9 +1,6 @@
 <?php
 session_start();
 error_reporting(E_ERROR);
-$nombre = $_SESSION['nombre'];
-$usuario = $_SESSION['nombre'];
-$id_usuario = $_SESSION['id_usuario'];
 
 if (isset($_SESSION['usuario'])) {
 
@@ -17,8 +14,9 @@ if (isset($_SESSION['usuario'])) {
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maxium-scale=1.0, minimum-scale=1.0">
         <title>Registro</title>
         <link rel="stylesheet" type="text/css" href="Lista_Alumnos/css/estiloReloj.css">
+        <link rel="stylesheet" href="css/estilo.css">
         <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500" rel="stylesheet">
-        <link rel="stylesheet" href="ccs/../../estilo.css">
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     </head>
 
     <body>
@@ -45,57 +43,35 @@ if (isset($_SESSION['usuario'])) {
                     <p>¡Especializacion Tecnico Desarrollo de Software!</p>
                 </div>
             </div>
-            <div class="php">
-                <?php
-                    //fecha de registro
-                    date_default_timezone_set('america/argentina/buenos_aires');
-                    $fechahoy = date("Y-m-d");
-
-                    //trae la direccion mac del dispositivo con el que ingresa al sistema
-                    echo 'IP: ' . $_SERVER['REMOTE_ADDR'] .  '<br>';
-                    $macs = explode(' ', shell_exec('arp -a ' . $_SERVER['REMOTE_ADDR']));
-
-                    foreach ($macs as $mac) {
-                        if (filter_var($mac, FILTER_VALIDATE_MAC) !== FALSE) {
-                            $macRed = $mac;
-                            break;
-                        }
-                    }
-
-                    echo 'MAC: ' . $macRed . '<br>';
-                    
-                    function asistencia($id_usuario,$macRed){
-
-                        //consulta de la mac del dispositivo registrado por el alumno 
-                        include "homeAlumno/mac/conexion.php";
-                        $query = "SELECT mac_compu FROM mac_dispositivo where id_usuario='$id_usuario' and mac_compu='$macRed'";
-                        $consulta = mysqli_query($conexion, $query);
-                        if (mysqli_num_rows($consulta) > 0) {
-                            $resultado = $conexion->query($query);
-                            $macQry = $resultado->fetch_assoc();
-                            print_r($macQry);
-                        } else {
-                            $query = "SELECT mac_celu FROM mac_dispositivo where id_usuario='$id_usuario' and mac_celu = '$macRed'";
-                            $consulta = mysqli_query($conexion, $query);
-                            if (mysqli_num_rows($consulta) > 0) {
-                                $resultado = $conexion->query($query);
-                                $macQry = $resultado->fetch_assoc();
-                                print_r($macQry);
-                            }
-                        }
-                    }
-                    
-                    ?>
-            </div> 
-
-                <input type="button" name="asistencia" value="asistencia" onclick="asistencia($id_usuario,$macRed)">
+            <div>
+                <br>
+                <br>
+                <button id='btnRegistrarAsistencia' value="Registrar Asistencia">Registrar Asistencia</button>
+            </div>
         </div>
+
     </body>
 
     </html>
 
     <script type="text/javascript" src="Lista_Alumnos/js/hora.js"></script>
     <script type="text/javascript" src="Lista_Alumnos/js/filtro.js"></script>
+    <script type="text/javascript">
+        $('#btnRegistrarAsistencia').on('click', function() {
+            $.ajax({
+                type: 'POST',
+                url: 'registrarAsistencia.php',
+                success: function(respuesta) {
+                    respuesta = JSON.parse(respuesta)                    
+                    if (respuesta.estado == 'error'){
+                        alert('No tiene permisos para dar asistencia desde este Dispositivo')
+                        return
+                    }
+                    alert('Se registró la asistencia correctamente');
+                }
+            })
+        })
+    </script>
 
 <?php
 } else {

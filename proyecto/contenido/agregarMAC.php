@@ -18,7 +18,7 @@ if (isset($_SESSION['usuario'])) {
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Lista Alumnos</title>
+	<title>Agregar Dispositivos</title>
 
 	<!-- Custom fonts for this template-->
 	<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -55,7 +55,7 @@ if (isset($_SESSION['usuario'])) {
 			<li class="nav-item active">
 				<a class="nav-link" href="direccionMac.php">
 					<i class="far fa-address-book fa-10x" style="color: #FFFFFF;"></i>
-					<span>Dirección Mac</span></a>
+					<span>Dispositivos</span></a>
 			</li>
 
 			<!-- Divider -->

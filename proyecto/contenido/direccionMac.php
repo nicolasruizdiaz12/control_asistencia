@@ -19,7 +19,7 @@ if (isset($_SESSION['usuario'])) {
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Home-Alumno</title>
+	<title>Dispositivos</title>
 
 	<!-- Custom fonts for this template-->
 	<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -251,7 +251,7 @@ if (isset($_SESSION['usuario'])) {
 
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Alumno :   <?php echo $usuario; ?> </h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Dispositivos &nbsp;   <a href="agregarMac.php"><button type="button" class="btn btn-info">Agregar</button></a></h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
