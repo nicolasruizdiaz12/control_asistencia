@@ -61,17 +61,20 @@
             <th colspan="2">ESPECIALIZACIÓN TECNOLÓGICO EN DESARROLLO DE SOFTWARE</th>
           </tr>
           <tr>
+            
             <td class="bg-primary">Apellido y Nombre</td>
-            <?php echo "<td>" . $fecha . "</td>"; ?>
-          </tr>
+            <td><?php echo "<td>" .$row['fecha'] . "</td>"; ?>
+           </tr>
           <?php
 
           include("Lista_Alumnos/conexion.php");
-          $query = "SELECT * FROM usuario";
+          $query = "SELECT * FROM usuario join registro";
           $resultado = $conexion->query($query);
+          
           while ($row = $resultado->fetch_assoc()) {
             echo "<tr>";
-            echo "<td>" . $row['nombre'] . "</td>";
+            echo "<td>" .$row['nombre'] . "</td>";
+            echo "<td>" . $row['asistencia'] . "</td>";
             echo "</tr>";
           }
           ?>

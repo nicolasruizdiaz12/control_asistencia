@@ -36,8 +36,9 @@ background: linear-gradient(to right, #000000, #0EA300); /* W3C, IE 10+/ Edge, F
 				</div>
 			</div>
 			<div class="col-sm-4">
+				<!-- Ingresa a la Ip del dispositivo y trae la dirección Mac -->
 				<?php
-				 echo 'IP: ' . $_SERVER['REMOTE_ADDR'] .  '<br>';
+				/*  echo 'IP: ' . $_SERVER['REMOTE_ADDR'] .  '<br>';
 				 $macs = explode(' ', shell_exec('arp -a ' . $_SERVER['REMOTE_ADDR']));
 				 
 				 foreach ($macs as $mac) {
@@ -47,7 +48,7 @@ background: linear-gradient(to right, #000000, #0EA300); /* W3C, IE 10+/ Edge, F
 					 }
 				 }
 
-				 echo 'MAC: ' . $macRed . '<br>';
+				 echo 'MAC: ' . $macRed . '<br>'; */
 				
 				?>
 			</div>
