@@ -24,10 +24,6 @@
             <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
             <link rel="stylesheet" href="css/parpadeo.css">
             <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-            <link rel="stylesheet" type="text/css" href="Lista_Alumnos/css/estiloReloj.css">
-            <link rel="stylesheet" href="css/estilo.css">
-            <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500" rel="stylesheet">
-            <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
             <!-- Custom styles for this template-->
             <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -249,84 +245,111 @@
                         </nav>
                         <!-- End of Topbar -->
 
-                        <!-- /.container-fluid -->
+                        <!-- Begin Page Content -->
+                        <div class="container-fluid">
 
-                        <body>
-                            <div class="contenedor">
-                                <div class="date">
-                                    <div class="fecha">
-                                        <p id="diaSemana" class="diaSemana"></p>
-                                        <p id="dia" class="dia"></p>
-                                        <p id="mes" class="mes"></p>
-                                        <p id="year" class="year"></p>
-                                    </div>
-                                    <div class="reloj">
-                                        <p id="horas" class="horas"></p>
-                                        <p>:</p>
-                                        <p id="minutos" class="minutos"></p>
-                                        <p>:</p>
-
-                                        <div class="caja-segundos">
-                                            <p id="ampm" class="ampm"></p>
-                                            <p id="segundos" class="segundos"></p>
-                                        </div>
-                                    </div>
-                                    <div class="inst">
-                                        <p>¡Especializacion Tecnico Desarrollo de Software!</p>
-                                    </div>
-                                </div> <br><br><br>
-                                <div style="text-align: center;">
-							<span class="parpadea text"><strong>
-							<button class="boton_1" id='btnRegistrarAsistencia' value="Registrar Asistencia">PRESENTE</button>
-								</strong>
-						</div>
+                            <!-- Page Heading -->
+                            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                                <h1 class="h3 mb-0 text-gray-800">Especialización Tecnica en Desarrollo de Software</h1>
                             </div>
 
-                        </body>
 
+                            <!-- /.container-fluid -->
+                            <div style="text-align: center;">
+
+                                <?php
+                                    include 'archivo/config.php';
+                                    if (isset($_POST['submit'])) {
+                                        if (is_uploaded_file($_FILES['fichero']['tmp_name'])) {
+
+
+                                            // se crea las variables para subir a la db
+                                            $ruta = "archivo/upload/";
+                                            $nombrefinal = trim($_FILES['fichero']['name']); //Eliminamos los espacios en blanco
+                                            $nombrefinal = str_ireplace(" ", "", $nombrefinal); //Sustituye una expresión regular
+                                            $upload = $ruta . $nombrefinal;
+
+
+
+                                            if (move_uploaded_file($_FILES['fichero']['tmp_name'], $upload)) { //movemos el archivo a su ubicacion 
+
+                                                /* echo "<b>Upload exitoso!. Datos:</b><br>";
+                                                echo "Nombre: <i><a href=\"" . $ruta . $nombrefinal . "\">" . $_FILES['fichero']['name'] . "</a></i><br>";
+                                                echo "Tipo MIME: <i>" . $_FILES['fichero']['type'] . "</i><br>";
+                                                echo "Peso: <i>" . $_FILES['fichero']['size'] . " bytes</i><br>";
+                                                echo "<br><hr><br>"; */
+
+
+
+                                                $nombre  = $_POST["nombre"];
+                                                $description  = $_POST["description"];
+
+
+                                                $query = "INSERT INTO archivo (name,description,ruta,tipo,size,id_usuario) 
+                                                VALUES ('$nombre','$description','" . $nombrefinal . "','" . $_FILES['fichero']['type'] . "','" . $_FILES['fichero']['size'] . "','$id_usuario')";
+                                                $resultado = $connect->query($query);
+                                                /* mysql_query($query) or die(mysql_error()); */
+                                                echo " $nombre : '<b>' Su archivo a sido enviado con Éxitos '</b>'<br><br><br>";
+                                            }
+                                        }
+                                    }
+                                    ?>
+                                <div>
+                                    <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
+                                        Seleccione archivo: <input name="fichero" type="file" size="150" maxlength="150">
+                                        <br><br> Nombre: <input name="nombre" type="text" size="70" maxlength="70">
+                                        <br><br> Descripción: <input name="description" type="text" size="100" maxlength="250">
+                                        <br><br>
+                                        <input name="submit" type="submit" class="btn btn-primary" value="SUBIR ARCHIVO">
+                                    </form>
+                                </div>
+
+
+
+                            </div>
+
+                        </div> <br><br><br>
+                        <!-- End of Main Content -->
+
+                        <!-- Footer -->
+                        <footer class="sticky-footer bg-white">
+                            <div class="container my-auto">
+                                <div class="copyright text-center my-auto">
+                                    <span>Ruiz Diaz Nico &copy; Gil Yami 2019</span>
+                                </div>
+                            </div>
+                        </footer>
+                        <!-- End of Footer -->
 
                     </div>
-                    <!-- End of Main Content -->
+                    <!-- End of Content Wrapper -->
 
-                    <!-- Footer -->
-                    <footer class="sticky-footer bg-white">
-                        <div class="container my-auto">
-                            <div class="copyright text-center my-auto">
-                                <span>Ruiz Diaz Nico &copy; Gil Yami 2019</span>
+                </div>
+                <!-- End of Page Wrapper -->
+
+                <!-- Scroll to Top Button-->
+                <a class="scroll-to-top rounded" href="#page-top">
+                    <i class="fas fa-angle-up"></i>
+                </a>
+
+                <!-- Logout Modal-->
+                <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Desea cerrar sección?</h5>
+                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.</div>
+                            <div class="modal-footer">
+                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                                <a class="btn btn-primary" href="../index.php">Cerrar sesión</a>
                             </div>
                         </div>
-                    </footer>
-                    <!-- End of Footer -->
-
-                </div>
-                <!-- End of Content Wrapper -->
-
-            </div>
-            <!-- End of Page Wrapper -->
-
-            <!-- Scroll to Top Button-->
-            <a class="scroll-to-top rounded" href="#page-top">
-                <i class="fas fa-angle-up"></i>
-            </a>
-
-            <!-- Logout Modal-->
-            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Desea cerrar sección?</h5>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.</div>
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                            <a class="btn btn-primary" href="../index.php">Cerrar sesión</a>
-                        </div>
                     </div>
                 </div>
-            </div>
             </div>
 
 
@@ -344,49 +367,6 @@
         </body>
 
         </html>
-
-        <!-- funcion del estilo del boton presente -->
-        <style type="text/css">
-            .boton_1 {
-                text-decoration: none;
-                padding: 58px;
-                padding-left: 10px;
-                padding-right: 10px;
-                font-family: helvetica;
-                font-weight: 25px;
-                font-size: 25px;
-                font-style: italic;
-                color: #fff;
-                background-color: #008000;
-                border-radius: 90px;
-                border: 10px double #006505;
-            }
-
-            .boton_1:hover {
-                opacity: 0.6;
-                text-decoration: none;
-            }
-        </style>
-        <!-- funcion del boton presente -->
-        <script type="text/javascript" src="Lista_Alumnos/js/hora.js"></script>
-        <script type="text/javascript" src="Lista_Alumnos/js/filtro.js"></script>
-        <script type="text/javascript">
-            $('#btnRegistrarAsistencia').on('click', function() {
-                $.ajax({
-                    type: 'POST',
-                    url: 'registrarAsistencia.php',
-                    success: function(respuesta) {
-                        respuesta = JSON.parse(respuesta)
-                        if (respuesta.estado == 'error') {
-                            alert('No tiene permisos para dar asistencia desde este Dispositivo')
-                            return
-                        }
-                        alert('Se registró la asistencia correctamente');
-                    }
-                })
-            })
-        </script>
-
     <?php
     } else {
         header("location:../inicioAlumno.php");

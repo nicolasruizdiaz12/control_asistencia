@@ -54,7 +54,7 @@ if (isset($_SESSION['usuario'])) {
 				<!-- Nav Item - Dashboard -->
 				<li class="nav-item active">
 					<a class="nav-link" href="direccionMac.php">
-						<i class="far fa-address-book fa-10x" style="color: #FFFFFF;"></i>
+						<i class="far fa-address-book fa-lg" style="color: #FFFFFF;"></i>
 						<span>Dispositivos</span></a>
 				</li>
 

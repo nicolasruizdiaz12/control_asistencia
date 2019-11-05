@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Registro</title>
+  <title>Registro Asistencia</title>
   <link rel="stylesheet" type="text/css" href="Lista_Alumnos/css/estiloReloj.css">
   <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500" rel="stylesheet">
 </head>
@@ -35,12 +35,7 @@
         <p>¡Especializacion Tecnico Desarrollo de Software!</p>
       </div>
     </div>
-
-    <?php
-    $fecha = "--/--";
-    date_default_timezone_set('america/argentina/buenos_aires');
-    $fechahoy = date("Y-m-d");
-    ?>
+    <br>
     <div>
       <div>
         <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
@@ -55,34 +50,47 @@
         </form>
       </div>
       <br>
-      <table class="table" id="tabla">
-        <tbody>
-          <tr>
-            <th colspan="2">ESPECIALIZACIÓN TECNOLÓGICO EN DESARROLLO DE SOFTWARE</th>
-          </tr>
-          <tr>
-            
-            <td class="bg-primary">Apellido y Nombre</td>
-            <td><?php echo "<td>" .$row['fecha'] . "</td>"; ?>
-           </tr>
-          <?php
+      <?php
+      date_default_timezone_set('america/argentina/buenos_aires');
+      $fechahoy = date("Y-m-d");
+      ?>
+      <section>
+        <table class="col-md-12">
+          <tbody>
+            <tr class="col-primary">
+              <th colspan="3">ESPECIALIZACIÓN TECNOLÓGICO EN DESARROLLO DE SOFTWARE</th>
+            </tr>
+            <tr>
+              <th class="bg-primary">Apellido y Nombre</th>
+              <th class="bg-primary"><?php echo $fechahoy ?></th>
+              <th class="bg-primary">Hora</th>
+            </tr>
+            <?php
+            $col = 0;
 
-          include("Lista_Alumnos/conexion.php");
-          $query = "SELECT * FROM usuario join registro";
-          $resultado = $conexion->query($query);
-          
-          while ($row = $resultado->fetch_assoc()) {
-            echo "<tr>";
-            echo "<td>" .$row['nombre'] . "</td>";
-            echo "<td>" . $row['asistencia'] . "</td>";
-            echo "</tr>";
-          }
-          ?>
-        </tbody>
-      </table>
+            include("Lista_Alumnos/conexion.php");
+            $query = "SELECT * FROM registro r inner join usuario u on r.id_usuario = u.id_usuario where r.fecha = '$fechahoy'";
+            $resultado = $conexion->query($query);
+
+            while ($row = $resultado->fetch_assoc()) {
+              $col++; 
+              echo "<tr>";
+              echo "<td>" . $row['nombre'] . "</td>";
+              echo "<td>" . $row['asistencia'] . "</td>";
+              echo "<td>" . $row['hora'] . "</td>";
+              if($col == 2){ //EN ESTA SENTENCIA INDICASD QUE AL LLEGAR A LA SEGUNDA COLUMNA INICIE OTRA FILA
+                $col=0; 
+                echo "</tr><tr>"; 
+            }
+              echo "</tr>";
+            }
+            ?>
+          </tbody>
+        </table>
+      </section>
+
     </div>
 
-    <div><input type="submit" value="Guardar Registro"></div>
   </div>
 
 </body>

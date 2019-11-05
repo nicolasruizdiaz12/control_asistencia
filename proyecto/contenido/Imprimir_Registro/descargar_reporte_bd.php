@@ -48,13 +48,8 @@ $resAlumnos=$conexion->query($alumno);
     <div align="center" >
     <div class="center-block">
     <form method="post" class="form" action="reporte.php">
-    <p>Desde</p>
-    <input type="date" name="fecha1">
-    <br>
-    <p>Hasta</p>
-    <input type="date" name="fecha2">
     <br><br>
-    <input type="submit" class="btn btn-success" name="generar_informe" >
+    <button type="botton" class="btn btn-success" name="generar_informe">Descargar</button>
     </form>
     </div>
     </div>

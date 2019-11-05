@@ -2,11 +2,10 @@
 
 include('conexion.php');//conexion a la BD
 
-$fecha1=$_POST['fecha1'];
-$fecha2=$_POST['fecha2'];
+if(isset($_POST['generar_informe'])){
 
-if(isset($_POST['generar_informe']))
-{
+
+
     //Nombre del archivo y charset, con el cual se va a imprimir
     //header('Content-Type:text/csv; charset=utf-8');
     //header('Content-Disposition: attachment; filename="Registro de Asistencia.csv"');
@@ -18,8 +17,8 @@ if(isset($_POST['generar_informe']))
     //Encabezado
     fputcsv($salida, array('Nombre y Apellido', 'CUIL',   'Fecha Nac',   'Domicilio',   'Email'),chr(9));
     //Query para crear el reporte
-    $reporteCsv=$conexion->query("SELECT * FROM usuarios WHERE fecha BETWEEN '$fecha1' AND '$fecha2' ORDER BY id_alumno");
-    while($filaR = $reporteCsv->fetch_assoc()){
+    $reporteCsv=$conexion->query("SELECT * FROM usuario  ORDER BY nombre");
+    while($filaR = $reporteCsv->fetch_array()){
 
         fputcsv($salida, array($filaR['nombre'],
         $filaR['cuil'],
@@ -29,3 +28,5 @@ if(isset($_POST['generar_informe']))
     }
     
 }
+
+?>

@@ -22,5 +22,3 @@ if($resultado){
 else{
     echo "Error de Registro";
 }
-
-?>

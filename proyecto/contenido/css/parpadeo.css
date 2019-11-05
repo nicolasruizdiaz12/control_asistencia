@@ -8,7 +8,7 @@
   .parpadea {
     
     animation-name: parpadeo;
-    animation-duration: 7s;
+    animation-duration: 15s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
   

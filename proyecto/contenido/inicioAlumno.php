@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(E_ERROR);
 
 $usuario = $_SESSION['nombre'];
 $id_usuario = $_SESSION['id_usuario'];
@@ -24,7 +25,7 @@ if (isset($_SESSION['usuario'])) {
 		<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="css/parpadeo.css">
 		<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
+		<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 		<!-- Custom styles for this template-->
 		<link href="css/sb-admin-2.min.css" rel="stylesheet">
 
@@ -52,7 +53,7 @@ if (isset($_SESSION['usuario'])) {
 				<!-- Nav Item - Dashboard -->
 				<li class="nav-item active">
 					<a class="nav-link" href="direccionMac.php">
-						<i class="far fa-address-book fa-10x" style="color: #FFFFFF;"></i>
+						<i class="far fa-address-book fa-lg" style="color: #FFFFFF;"></i>
 						<span>Dispositivos</span></a>
 				</li>
 
@@ -263,7 +264,7 @@ if (isset($_SESSION['usuario'])) {
 									<div class="card-body">
 										<div class="row no-gutters align-items-center">
 											<div class="col mr-2">
-												<div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><a href="#">Fustificar</a></div>
+												<div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><a href="justificacion.php">Justificar</a></div>
 												<div class="h5 mb-0 font-weight-bold text-gray-800">Inasistencia</div>
 											</div>
 											<div class="col-auto">
@@ -279,7 +280,7 @@ if (isset($_SESSION['usuario'])) {
 									<div class="card-body">
 										<div class="row no-gutters align-items-center">
 											<div class="col mr-2">
-												<div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><a href="#"></a>Marcar Asistencia</div>
+												<div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><a href="presente.php">Marcar Asistencia</a></div>
 												<div>
 													<?php
 														date_default_timezone_set('america/argentina/buenos_aires');
@@ -333,15 +334,16 @@ if (isset($_SESSION['usuario'])) {
 
 							<!-- /.container-fluid -->
 
-						</div>
+						</div> <br><br>
 						<!-- /.container-fluid -->
 						<div style="text-align: center;">
-							<span class="parpadea text"><strong><a href="http:presente.php">boton</a>
+							<span class="parpadea text"><strong>
+							<button class="boton_1" id='btnRegistrarAsistencia' value="Registrar Asistencia">PRESENTE</button>
 								</strong>
 						</div>
 
 
-					</div>
+					</div> <br><br><br>
 					<!-- End of Main Content -->
 
 					<!-- Footer -->
@@ -384,6 +386,48 @@ if (isset($_SESSION['usuario'])) {
 				</div>
 			</div>
 		</div>
+
+		<!-- funcion del estilo del boton presente -->
+		<style type="text/css">
+			.boton_1 {
+				text-decoration: none;
+				padding: 58px;
+				padding-left: 10px;
+				padding-right: 10px;
+				font-family: helvetica;
+				font-weight: 25px;
+				font-size: 25px;
+				font-style: italic;
+				color: #fff;
+				background-color: #008000;
+				border-radius: 90px;
+				border: 10px double #006505;
+			}
+
+			.boton_1:hover {
+				opacity: 0.6;
+				text-decoration: none;
+			}
+		</style>
+		<!-- funcion del boton presente -->
+		<script type="text/javascript" src="Lista_Alumnos/js/hora.js"></script>
+		<script type="text/javascript" src="Lista_Alumnos/js/filtro.js"></script>
+		<script type="text/javascript">
+			$('#btnRegistrarAsistencia').on('click', function() {
+				$.ajax({
+					type: 'POST',
+					url: 'registrarAsistencia.php',
+					success: function(respuesta) {
+						respuesta = JSON.parse(respuesta)
+						if (respuesta.estado == 'error') {
+							alert('No tiene permisos para dar asistencia desde este Dispositivo')
+							return
+						}
+						alert('Se registró la asistencia correctamente');
+					}
+				})
+			})
+		</script>
 
 
 

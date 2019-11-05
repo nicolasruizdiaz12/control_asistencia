@@ -57,7 +57,7 @@ if (isset($_SESSION['usuario'])) {
 				<!-- Nav Item - Dashboard -->
 				<li class="nav-item active">
 					<a class="nav-link" href="inicio.php">
-						<i class="far fa-address-book fa-10x" style="color: #FFFFFF;"></i>
+						<i class="far fa-address-book fa-lg" style="color: #FFFFFF;"></i>
 						<span>Asistencia</span></a>
 				</li>
 
@@ -122,7 +122,7 @@ if (isset($_SESSION['usuario'])) {
 
 				<!-- Nav Item - Charts -->
 				<li class="nav-item active">
-					<a class="nav-link" target="_blank" href="registros.php">
+					<a class="nav-link" target="_blank" href="asistenciaDelDia.php">
 						<i class="far fa-address-card"></i>
 						<span>Registro Asistencia</span></a>
 				</li>
@@ -313,7 +313,7 @@ if (isset($_SESSION['usuario'])) {
 						<!-- Page Heading -->
 						<div class="d-sm-flex align-items-center justify-content-between mb-4">
 							<h1 class="h3 mb-0 text-gray-800">Especialización Tecnica en Desarrollo de Software</h1>
-							<a target="_blank" href="Imprimir_Registro/descargar_reporte_bd.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generar Informe</a>
+							<a target="_blank" href="Imprimir_Registro/descargar_registro_asistencia.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generar Informe</a>
 						</div>
 
 						<!-- Content Row -->
@@ -389,9 +389,6 @@ if (isset($_SESSION['usuario'])) {
 
 							<!-- /.container-fluid -->
 
-							<p>
-								<center>Eventos y Noticias</center>
-							</p>
 						</div>
 						<!-- End of Main Content -->
 
