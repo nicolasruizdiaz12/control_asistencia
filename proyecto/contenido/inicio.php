@@ -385,11 +385,11 @@ if (isset($_SESSION['usuario'])) {
 										</div>
 									</div>
 								</div>
-							</div>
+							</div> 
 
 							<!-- /.container-fluid -->
 
-						</div>
+						</div> <br><br><br><br>
 						<!-- End of Main Content -->
 
 						<footer class="sticky-footer bg-white">

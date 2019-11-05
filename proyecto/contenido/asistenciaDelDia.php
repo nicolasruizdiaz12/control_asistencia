@@ -33,6 +33,7 @@ if (isset($_SESSION['usuario'])) {
     </head>
 
     <!-- Funcion de confirmacion para eliminar datos de la lista por js -->
+
     <body id="page-top">
 
         <!-- Page Wrapper -->
@@ -311,7 +312,7 @@ if (isset($_SESSION['usuario'])) {
                         <!-- Page Heading -->
                         <div class="d-sm-flex align-items-center justify-content-between mb-4">
                             <h1 class="h3 mb-0 text-gray-800">Especialización Tecnica en Desarrollo de Software</h1>
-                            <a target="_blank" href="Imprimir_Registro/descargar_reporte_bd.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generar Informe</a>
+                            <a target="_blank" href="Imprimir_Registro/descargar_registro_asistencia.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generar Informe</a>
                         </div>
 
                         <?php
@@ -321,7 +322,7 @@ if (isset($_SESSION['usuario'])) {
 
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary" style='text-align:center'>Registro Asistencia  <?php echo $fechahoy; ?></h6>
+                                <h6 class="m-0 font-weight-bold text-primary" style='text-align:center'>Registro Asistencia <?php echo $fechahoy; ?></h6>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -335,24 +336,21 @@ if (isset($_SESSION['usuario'])) {
                                         </thead>
                                         <tbody>
                                             <?php
-                                                $col = 0;
 
                                                 include("Lista_Alumnos/conexion.php");
-                                                $query = "SELECT * FROM registro r inner join usuario u on r.id_usuario = u.id_usuario where r.fecha = '$fechahoy'";
-                                                $resultado = $conexion->query($query);
+                                                $query = "SELECT * FROM registro r inner join usuario u on r.id_usuario = u.id_usuario where r.fecha_Asistencia = '$fechahoy' ORDER by nombre DESC";
+                                                if ($resultado = mysqli_query($conexion, $query)) {
 
-                                                while ($row = $resultado->fetch_assoc()) {
-                                                    $col++;
-                                                    echo "<tr>";
-                                                    echo "<td>" . $row['nombre'] . "</td>";
-                                                    echo "<td>" . $row['asistencia'] . "</td>";
-                                                    echo "<td>" . $row['fecha_Asistencia'] . "</td>";
-                                                    echo "<td>" . $row['hora'] . "</td>";
-                                                    if ($col == 2) {
-                                                        $col = 0;
+                                                    while ($row = mysqli_fetch_assoc($resultado)) {
+        
+                                                        echo "<tr>";
+                                                        echo "<td>" . $row['nombre'] . "</td>";
+                                                        echo "<td>" . $row['asistencia'] . "</td>";
+                                                        echo "<td>" . $row['hora'] . "</td>";
+
+                                                        echo "</tr>";
                                                     }
-                                    
-                                                    echo "</tr>";
+                                                    mysqli_free_result($resultado);
                                                 }
 
                                                 ?>

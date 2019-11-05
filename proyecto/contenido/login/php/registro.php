@@ -10,12 +10,13 @@
 		$email=$_POST['email'];	
 		$usuario=$_POST['usuario'];
 		$password=sha1($_POST['password']);
+		$tipoUsuario="1";
 
 		if(buscaUserRepetido($usuario,$password,$conexion)==1){
 			echo 2;
 		}else{
-			$sql="INSERT into usuario (nombre,cuil,fecha,domicilio,email,usuario,password)
-				values ('$nombre','$cuil','$fecha','$domicilio','$email','$usuario','$password')";
+			$sql="INSERT into usuario (nombre,cuil,fecha,domicilio,email,usuario,password,id_tipo)
+				values ('$nombre','$cuil','$fecha','$domicilio','$email','$usuario','$password','$tipoUsuario')";
 			echo $result=mysqli_query($conexion,$sql);
 		}
 
