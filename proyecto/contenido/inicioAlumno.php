@@ -338,7 +338,7 @@ if (isset($_SESSION['usuario'])) {
 						<!-- /.container-fluid -->
 						<div style="text-align: center;">
 							<span class="parpadea text"><strong>
-							<button class="boton_1" id='btnRegistrarAsistencia' value="Registrar Asistencia">PRESENTE</button>
+									<button class="boton_1" id='btnRegistrarAsistencia' value="Registrar Asistencia">PRESENTE</button>
 								</strong>
 						</div>
 
@@ -421,9 +421,16 @@ if (isset($_SESSION['usuario'])) {
 						respuesta = JSON.parse(respuesta)
 						if (respuesta.estado == 'error') {
 							alert('No tiene permisos para dar asistencia desde este Dispositivo')
-							return
+
+						} else {
+							if (respuesta.estado == 'repetido') {
+								alert('Ya se registro la asistencia')
+							} else {
+								alert('Se registró la asistencia correctamente');
+							}
 						}
-						alert('Se registró la asistencia correctamente');
+
+
 					}
 				})
 			})

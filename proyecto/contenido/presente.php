@@ -377,11 +377,11 @@
                     url: 'registrarAsistencia.php',
                     success: function(respuesta) {
                         respuesta = JSON.parse(respuesta)
-                        if (respuesta.estado == 'error') {
-                            alert('No tiene permisos para dar asistencia desde este Dispositivo')
+                        if (respuesta.estado == 'ok') {
+                            alert('Se registró la asistencia correctamente')
                             return
                         }
-                        alert('Se registró la asistencia correctamente');
+                        alert('No tiene permisos para dar asistencia desde este Dispositivo');
                     }
                 })
             })
