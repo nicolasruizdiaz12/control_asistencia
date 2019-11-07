@@ -39,7 +39,7 @@
         echo json_encode(array('estado' => 'ok', 'mac' => $macRed, 'nombre' => $nombre),JSON_FORCE_OBJECT);
         }
     } else {        
-       /*  $query2="INSERT INTO registro(asistencia, fecha_Asistencia, hora, id_usuario) VALUES('$ausente','$fechahoy','$hora','$id_usuario')";
+       /* $query2="INSERT INTO registro(asistencia, fecha_Asistencia, hora, id_usuario) VALUES('$ausente','$fechahoy','$hora','$id_usuario')";
         $resultado= $conexion->query($query2); */
         echo json_encode(array('estado' => 'error', 'mac' => $macRed, 'nombre' => $nombre),JSON_FORCE_OBJECT);
     

@@ -109,14 +109,14 @@
 
   <!-- Nav Item - Charts -->
   <li class="nav-item active">
-	<a class="nav-link" href="charts.html">
+	<a class="nav-link" href="asistenciaDelDia.php">
     <i class="far fa-address-card"></i>
 	  <span>Registro Asistencia</span></a>
   </li>
 
   <!-- Nav Item - Tables -->
   <li class="nav-item">
-	<a class="nav-link" href="Alumnos.php">
+	<a class="nav-link" href="listaAlumnos.php">
 	  <i class="fas fa-user-graduate" style="color: #FFFFFF;"></i>
 	  <span>Alumnos</span></a>
   </li>
