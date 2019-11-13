@@ -338,14 +338,17 @@ if (isset($_SESSION['usuario'])) {
                                             <?php
 
                                                 include("Lista_Alumnos/conexion.php");
-                                                $query = "SELECT * FROM registro r inner join usuario u on r.id_usuario = u.id_usuario where r.fecha_Asistencia = '$fechahoy' ORDER by nombre DESC";
+                                                $query = "SELECT U.nombre, TR.tipo_asistencia, R.hora FROM registro R 
+                                                        INNER JOIN  usuario U on R.id_usuario = U.id_usuario
+                                                        INNER JOIN tipo_asistencia TR on TR.id_asistencia = R.id_asistencia
+                                                        WHERE R.fecha_Asistencia = '$fechahoy' ORDER by nombre DESC";
                                                 if ($resultado = mysqli_query($conexion, $query)) {
 
                                                     while ($row = mysqli_fetch_assoc($resultado)) {
         
                                                         echo "<tr>";
                                                         echo "<td>" . $row['nombre'] . "</td>";
-                                                        echo "<td>" . $row['asistencia'] . "</td>";
+                                                        echo "<td>" . $row['tipo_asistencia'] . "</td>";
                                                         echo "<td>" . $row['hora'] . "</td>";
 
                                                         echo "</tr>";

@@ -3,7 +3,9 @@
 
 include('conexion.php');
 ///Consulta a la BD 
-$registro = "SELECT * FROM registro r inner join usuario u on (r.id_usuario = u.id_usuario) order by r.fecha_Asistencia";
+$registro = "SELECT U.nombre, TR.tipo_asistencia, R.hora, R.fecha_Asistencia FROM registro R 
+INNER JOIN  usuario U on R.id_usuario = U.id_usuario
+INNER JOIN tipo_asistencia TR on TR.id_asistencia = R.id_asistencia order by R.fecha_Asistencia";
 $resAsistencia = $conexion->query($registro);
 
 ?>
@@ -36,7 +38,7 @@ $resAsistencia = $conexion->query($registro);
 
                 echo '<tr>
             <td class="success">' . $registroAsistencia['nombre'] . '</td>
-            <td>' . $registroAsistencia['asistencia'] . '</td>
+            <td>' . $registroAsistencia['tipo_asistencia'] . '</td>
             <td>' . $registroAsistencia['fecha_Asistencia'] . '</td>
             <td>' . $registroAsistencia['hora'] . '</td>
             </tr>';

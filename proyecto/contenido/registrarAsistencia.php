@@ -4,8 +4,8 @@
     $id_usuario = $_SESSION['id_usuario'];
     $nombre = $_SESSION['nombre'];
     $usuario = $_SESSION['nombre'];
-    $presente = 'Presente';
-    $ausente = 'Ausente';
+    $ausente = '1';
+    $presente = '2';
     //fecha y hora de registro
     date_default_timezone_set('america/argentina/buenos_aires');
     $fechahoy = date("Y-m-d");
@@ -34,7 +34,7 @@
         if (mysqli_num_rows($resultado) > 0){
             echo json_encode(array('estado' => 'repetido', 'mac' => $macRed, 'nombre' => $nombre),JSON_FORCE_OBJECT);
         }else{
-        $query1="INSERT INTO registro(asistencia, fecha_Asistencia, hora, id_usuario) VALUES('$presente','$fechahoy', '$hora','$id_usuario')";
+        $query1="INSERT INTO registro(id_asistencia, fecha_Asistencia, hora, id_usuario) VALUES('$presente','$fechahoy', '$hora','$id_usuario')";
         $resultado= $conexion->query($query1);
         echo json_encode(array('estado' => 'ok', 'mac' => $macRed, 'nombre' => $nombre),JSON_FORCE_OBJECT);
         }
