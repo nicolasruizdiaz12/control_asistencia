@@ -67,8 +67,7 @@ background: linear-gradient(to right, #000000, #0EA300); /* W3C, IE 10+/ Edge, F
 			} else if ($('#password').val() == "") {
 				alertify.alert("Debes agregar el password");
 				return false;
-			}
-
+			}			
 			cadena = "usuario=" + $('#usuario').val() +
 				"&password=" + $('#password').val();
 			console.log(cadena);
@@ -76,11 +75,16 @@ background: linear-gradient(to right, #000000, #0EA300); /* W3C, IE 10+/ Edge, F
 				type: "POST",
 				url: "contenido/login/php/login.php",
 				data: cadena,
-				success: function(r) {
-					if (r == 1) {
-						window.location = "contenido/inicioAlumno.php";
-					} else {
-						alertify.alert("Fallo al entrar");
+				success : function(respuesta) {
+					respuesta = JSON.parse(respuesta)
+					if (respuesta.tipo == '1') {
+						location.href = "contenido/inicioAlumno.php";
+
+					} else if (respuesta.tipo == '2') {
+						location.href = "contenido/inicio.php";
+					}
+					 else {
+						alertify.alert("Fallo el ingreso");
 					}
 				}
 			});
