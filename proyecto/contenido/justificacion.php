@@ -259,6 +259,9 @@
 
                                 <?php
                                     include 'archivo/config.php';
+                                    date_default_timezone_set('america/argentina/buenos_aires');
+                                    $fechahoy = date("Y-m-d");
+                                    $hora = date("H:i:s");
                                     if (isset($_POST['submit'])) {
                                         if (is_uploaded_file($_FILES['fichero']['tmp_name'])) {
 
@@ -289,6 +292,11 @@
                                                 VALUES ('$nombre','$description','" . $nombrefinal . "','" . $_FILES['fichero']['type'] . "','" . $_FILES['fichero']['size'] . "','$id_usuario')";
                                                 $resultado = $connect->query($query);
                                                 /* mysql_query($query) or die(mysql_error()); */
+
+                                                $query1 = "INSERT INTO notificacione (description,fecha_noti,ruta,tipo,vista,id_usuario)
+                                                VALUES ('$description','$fechahoy','" . $nombrefinal . "','" . $_FILES['fichero']['type'] . "','0','$id_usuario')";
+                                                $resultado = $connect->query($query1);
+
                                                 echo " $nombre : '<b>' Su archivo a sido enviado con Éxitos '</b>'<br><br><br>";
                                             }
                                         }
