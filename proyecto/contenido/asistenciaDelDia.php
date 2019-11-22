@@ -338,10 +338,10 @@ if (isset($_SESSION['usuario'])) {
                                             <?php
 
                                                 include("Lista_Alumnos/conexion.php");
-                                                $query = "SELECT U.nombre, TR.tipo_asistencia, R.hora FROM registro R 
+                                                $query = "SELECT U.nombre, TR.tipo_asistencia, R.hora_registro FROM registro R 
                                                         INNER JOIN  usuario U on R.id_usuario = U.id_usuario
-                                                        INNER JOIN tipo_asistencia TR on TR.id_asistencia = R.id_asistencia
-                                                        WHERE R.fecha_Asistencia = '$fechahoy' ORDER by nombre DESC";
+                                                        INNER JOIN tipo_asistencia TR on TR.id_tipo_asistencia = R.id_tipo_asistencia
+                                                        WHERE R.fecha_registro = '$fechahoy' ORDER by nombre DESC";
                                                 if ($resultado = mysqli_query($conexion, $query)) {
 
                                                     while ($row = mysqli_fetch_assoc($resultado)) {
@@ -349,7 +349,7 @@ if (isset($_SESSION['usuario'])) {
                                                         echo "<tr>";
                                                         echo "<td>" . $row['nombre'] . "</td>";
                                                         echo "<td>" . $row['tipo_asistencia'] . "</td>";
-                                                        echo "<td>" . $row['hora'] . "</td>";
+                                                        echo "<td>" . $row['hora_registro'] . "</td>";
 
                                                         echo "</tr>";
                                                     }

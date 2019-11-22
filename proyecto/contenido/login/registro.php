@@ -94,10 +94,10 @@ background: linear-gradient(to right, #000000, #0EA300); /* W3C, IE 10+/ Edge, F
 				success: function(r) {
 
 					if (r == 2) {
-						alertify.alert("Este usuario ya existe, prueba con otro");
+						alertify.alert("Éste usuario ya existe, prueba con otro");
 					} else if (r == 1) {
 						$('#frmRegistro')[0].reset();
-						alertify.success("Agregado con exito");
+						alertify.success("Agregado con Éxitos");
 					} else {
 						alertify.error("Fallo al agregar");
 					}

@@ -6,7 +6,7 @@ $id_usuario = $_SESSION['id_usuario'];
 
 if (isset($_SESSION['usuario'])) {
 
-	?>
+?>
 
 	<!DOCTYPE html>
 	<html lang="en">
@@ -21,18 +21,18 @@ if (isset($_SESSION['usuario'])) {
 		<meta name="description" content="">
 		<meta name="author" content="">
 
-		<title>Proyecto</title>
+		<title>Inico-Preceptor</title>
 
 		<!-- Custom fonts for this template-->
 		<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
 
+		<!-- Custom fonts for this template-->
+		<link rel="stylesheet" href="css/parpadeo.css">
+		<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+		<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 		<!-- Custom styles for this template-->
 		<link href="css/sb-admin-2.min.css" rel="stylesheet">
-
-		<script src="js/4163d1ab35.js"></script>
-		<script src="https://kit.fontawesome.com/4163d1ab35.js" crossorigin="anonymous"></script>
-
 	</head>
 
 	<body>
@@ -169,7 +169,7 @@ if (isset($_SESSION['usuario'])) {
 					include("Lista_Alumnos/conexion.php");
 					$query = "SELECT * FROM notificacione N inner join usuario U on N.id_usuario = U.id_usuario where vista = '0' order by 'id_notificacione' desc ";
 					if ($resultado = mysqli_query($conexion, $query)) {
-						
+
 						?>
 
 
@@ -247,7 +247,6 @@ if (isset($_SESSION['usuario'])) {
 											 </a>';
 											}
 											mysqli_free_result($resultado);
-											
 										}
 										?>
 									<a class="dropdown-item text-center small text-gray-500" href="#">Mostrar todas las Alertas</a>
@@ -386,8 +385,14 @@ if (isset($_SESSION['usuario'])) {
 
 								<!-- /.container-fluid -->
 
-							</div> <br><br><br><br>
+							</div> <br><br>
 							<!-- End of Main Content -->
+
+							<div style="text-align: center;">
+								<span class="parpadea text"><strong>
+										<button class="boton_1" id='btnRegistrarAsistencia' value="Habilitar Asistencia">HABILITAR</button>
+									</strong>
+							</div> <br><br><br>
 
 							<footer class="sticky-footer bg-white">
 								<div class="container my-auto">
@@ -441,9 +446,53 @@ if (isset($_SESSION['usuario'])) {
 		<script src="js/demo/chart-pie-demo.js"></script>
 
 
+		<!-- funcion del estilo del boton presente -->
+		<style type="text/css">
+			.boton_1 {
+				text-decoration: none;
+				padding: 58px;
+				padding-left: 10px;
+				padding-right: 10px;
+				font-family: helvetica;
+				font-weight: 25px;
+				font-size: 25px;
+				font-style: italic;
+				color: #fff;
+				background-color: #008000;
+				border-radius: 90px;
+				border: 10px double #006505;
+			}
+
+			.boton_1:hover {
+				opacity: 0.6;
+				text-decoration: none;
+			}
+		</style>
+		<!-- funcion del boton presente -->
+		
+		<script type="text/javascript">
+			$('#btnRegistrarAsistencia').on('click', function() {
+				$.ajax({
+					type: 'POST',
+					url: 'habilitarAsistencia.php',
+					success: function(respuesta) {
+						respuesta = JSON.parse(respuesta)
+						if (respuesta.estado == 'error') {
+							alert('No es posible HABILITAR')
+
+						} else {
+							if (respuesta.estado == 'repetido') {
+								alert('HABILITACIÓN ya realizada')
+							} else {
+								alert('Asistencia HABILITADA');
+							}
+						}
 
 
-
+					}
+				})
+			})
+		</script>
 
 	</body>
 

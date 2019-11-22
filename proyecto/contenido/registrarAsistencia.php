@@ -29,12 +29,12 @@ $query = "Select * From mac_dispositivo
 
 $consulta = mysqli_query($conexion, $query);
 if (mysqli_num_rows($consulta) > 0) {
-    $repetido = "SELECT * FROM registro where id_usuario = '$id_usuario' and fecha_Asistencia = '$fechahoy'";
+    $repetido = "SELECT * FROM registro where id_usuario = '$id_usuario' and fecha_registro = '$fechahoy' and id_tipo_asistencia != 1";
     $resultado = mysqli_query($conexion, $repetido);
     if (mysqli_num_rows($resultado) > 0) {
         echo json_encode(array('estado' => 'repetido', 'mac' => $macRed, 'nombre' => $nombre), JSON_FORCE_OBJECT);
     } else {
-        $query1 = "INSERT INTO registro(id_asistencia, fecha_Asistencia, hora, id_usuario) VALUES('$presente','$fechahoy', '$hora','$id_usuario')";
+        $query1 = "UPDATE registro SET id_tipo_asistencia = 2, hora_registro = '$hora' WHERE  id_usuario = '$id_usuario' and id_tipo_asistencia = 1 and fecha_registro = '$fechahoy'";
         $resultado = $conexion->query($query1);
         echo json_encode(array('estado' => 'ok', 'mac' => $macRed, 'nombre' => $nombre), JSON_FORCE_OBJECT);
     }

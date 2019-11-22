@@ -295,9 +295,13 @@
 
                                                 $query1 = "INSERT INTO notificacione (description,fecha_noti,ruta,tipo,vista,id_usuario)
                                                 VALUES ('$description','$fechahoy','" . $nombrefinal . "','" . $_FILES['fichero']['type'] . "','0','$id_usuario')";
-                                                $resultado = $connect->query($query1);
+                                                if ( $resultado = $connect->query($query1)) {
+                                                echo "<script type=\"text/javascript\">alert(\"¡Archivo enviado con éxitos!\");</script>";
+                                                } else {
+                                                echo "<script type=\"text/javascript\">alert(\"Algo salió mal. Intente nuevamente.\");</script>";
+                                                }
+                                                
 
-                                                echo " $nombre : '<b>' Su archivo a sido enviado con Éxitos '</b>'<br><br><br>";
                                             }
                                         }
                                     }

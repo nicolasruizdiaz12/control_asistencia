@@ -347,7 +347,7 @@ if (isset($_SESSION['usuario'])) {
 										<tbody>
 											<?php
 												include("Lista_Alumnos/conexion.php");
-												$query = "SELECT * FROM usuario where id_tipo = '1'";
+												$query = "SELECT * FROM usuario where id_tipo_usuario = '1'";
 												$resultado = $conexion->query($query);
 												while ($row = $resultado->fetch_assoc()) {
 													echo "<tr>";

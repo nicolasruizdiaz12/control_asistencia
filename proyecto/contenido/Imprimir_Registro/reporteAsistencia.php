@@ -18,13 +18,16 @@ if(isset($_POST['generar_registro']))
     //Encabezado
     fputcsv($salida, array('Nombre y Apellido', 'ASISTENCIA',   'FECHA',   'HORA'),chr(9));
     //Query para crear el reporte
-    $reporteCsv=$conexion->query("SELECT * FROM registro r inner join usuario u on r.id_usuario = u.id_usuario  WHERE r.fecha_Asistencia BETWEEN '$fecha1' AND '$fecha2' ORDER BY fecha_Asistencia");
+    $reporteCsv=$conexion->query("SELECT U.nombre, TR.tipo_asistencia, R.hora_registro FROM registro R 
+    INNER JOIN  usuario U on R.id_usuario = U.id_usuario
+    INNER JOIN tipo_asistencia TR on TR.id_tipo_asistencia = R.id_tipo_asistencia
+    WHERE r.fecha_registro BETWEEN '$fecha1' AND '$fecha2' ORDER BY fecha_registro");
     while($filaR = $reporteCsv->fetch_assoc()){
 
         fputcsv($salida, array($filaR['nombre'],
-        $filaR['asistencia'],
-        $filaR['fecha_Asistencia'],
-        $filaR['hora']),chr(9));
+        $filaR['tipo_asistencia'],
+        $filaR['fecha_registro'],
+        $filaR['hora_registro']),chr(9));
     }
     
 }
