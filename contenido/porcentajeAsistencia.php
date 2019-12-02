@@ -381,30 +381,53 @@ if (isset($_SESSION['usuario'])) {
                                             <tbody>
                                                 <?php
                                                     include("Lista_Alumnos/conexion.php");
-                                                    $query = "Select nombre,Cant_Presentes/Cant_clases *100,Cant_Ausentes/Cant_clases*100
+                                                    $query = "Select nombre,Cant_Presentes/Cant_clases *100,Cant_Ausentes/Cant_clases*100, Cant_Presentes,Cant_Ausentes
                                                     from
                                                    (select nombre
+                                                    , (select count(*) as total from registro where  id_tipo_asistencia = 2 And fecha_registro BETWEEN '2019-01-01' and '2019-12-31'
+                                                                                         And registro.id_usuario = usuario.id_usuario) as Cant_Presentes
                                                     , (select count(*) from registro where  id_tipo_asistencia = 1 And fecha_registro BETWEEN '2019-01-01' and '2019-12-31'
-                                                                                         And registro.id_usuario = usuario.id_usuario) Cant_Presentes
-                                                    , (select count(*) from registro where  id_tipo_asistencia = 2 And fecha_registro BETWEEN '2019-01-01' and '2019-12-31'
-                                                                                         And registro.id_usuario = usuario.id_usuario) Cant_Ausentes
+                                                                                         And registro.id_usuario = usuario.id_usuario) as Cant_Ausentes
                                                     ,(select count(distinct fecha_registro) from registro where fecha_registro BETWEEN '2019-01-01' and '2019-12-31') Cant_Clases                                  
                                                     from usuario
                                                     Where id_tipo_usuario = 1) tblRegistro";
                                                     $resultado = $conexion->query($query);
                                                     while ($row = $resultado->fetch_assoc()) {
+                                                        $porcentaje = number_format($row['Cant_Presentes/Cant_clases *100']);
+                                                        
+                                                        /* color */
+                                                        if ($porcentaje >= 86 ) {
+                                                            $color = 'bg-success';
+                                                        }else if($porcentaje >= 80 && $porcentaje <= 85 )  {
+                                                            $color = 'bg-warning';
+                                                        }
+                                                        else {
+                                                            $color = 'bg-danger';
+                                                        }
+
                                                         echo "<tr>";
                                                         echo "<td>" . $row['nombre'] . "</td>";
+                                                        echo "<td>" . $row['Cant_Presentes'] . "</td>";
+                                                        echo "<td>" . $row['Cant_Ausentes'] . "</td>";
+                                                        echo "<td>
+                                                            <div class='progress'>
+                                                                <div class='progress-bar $color ' role='progressbar' style='width:$porcentaje%; min-width:10%;'>
+                                                                    $porcentaje%
+                                                                </div>
+                                                               
+                                                            </div>
+                                                        </td>";
                                                         echo "</tr>";
                                                     }
 
+                                                    // <span class='sr-only'>.$porcentaje.'</span>
                                                     ?>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
-
+                            
                         </div>
                         <!-- /.container-fluid -->
 

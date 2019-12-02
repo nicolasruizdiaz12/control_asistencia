@@ -8,12 +8,12 @@ $nombre = $_SESSION['nombre'];
 $usuario = $_SESSION['nombre'];
 
 
-$CantPresente = "SELECT COUNT(id_tipo_asistencia) presente, id_usuario FROM registro WHERE id_tipo_asistencia = '2' and id_usuario = '49'";
+$CantPresente = "SELECT COUNT(id_tipo_asistencia) presente, id_usuario FROM registro WHERE id_tipo_asistencia = '2' and id_usuario = '$id_usuario'";
 $result = mysqli_query($mysqli, $CantPresente);
 $presentes = mysqli_fetch_assoc($result);
 echo 'Cantidad Presente: ' . $presentes['presente'] . '<br>';
 
-$CantAusente = "SELECT COUNT(id_tipo_asistencia) ausente, id_usuario FROM registro WHERE id_tipo_asistencia = '1' and id_usuario = '49'";
+$CantAusente = "SELECT COUNT(id_tipo_asistencia) ausente, id_usuario FROM registro WHERE id_tipo_asistencia = '1' and id_usuario = '$id_usuario'";
 $result = mysqli_query($mysqli, $CantAusente);
 $ausentes = mysqli_fetch_assoc($result);
 echo 'Cantidad Ausentes: ' . $ausentes['ausente'] . '<br>';
