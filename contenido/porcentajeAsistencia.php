@@ -19,7 +19,7 @@ if (isset($_SESSION['usuario'])) {
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Lista Alumnos</title>
+        <title>Porcentaje-Asistencia</title>
 
         <!-- Custom fonts for this template-->
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

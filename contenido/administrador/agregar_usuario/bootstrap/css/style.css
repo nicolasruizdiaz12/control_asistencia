@@ -1,0 +1,26 @@
+.body {
+  background-color: forestgreen;
+}
+.panel-asistencia {
+    border-color: #212529;
+  }
+  .panel-asistencia > .panel-heading {
+    color: #fff;
+    background-color: #212529;
+    border-color: #212529;
+  }
+  .panel-asistencia > .panel-heading + .panel-collapse > .panel-body {
+    border-top-color: #212529;
+  }
+  .panel-asistencia > .panel-heading .badge {
+    color: #212529;;
+    background-color: #fff;
+  }
+  .panel-asistencia > .panel-footer + .panel-collapse > .panel-body {
+    border-bottom-color: #212529;
+    background-color:rgba(35, 38, 56, 0.829);
+  }
+
+  .img-logo {
+      border-radius: 13%; }
+  

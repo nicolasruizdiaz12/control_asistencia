@@ -82,8 +82,9 @@ background: linear-gradient(to right, #000000, #0EA300); /* W3C, IE 10+/ Edge, F
 
 					} else if (respuesta.tipo == '2') {
 						location.href = "contenido/inicio.php";
-					}
-					 else {
+					} else if (respuesta.tipo == '3'){
+						location.href = "contenido/administrador/inicioAdmin.php";
+					}else {
 						alertify.alert("Fallo el ingreso");
 					}
 				}

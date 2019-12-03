@@ -1,0 +1,23 @@
+.contenedor{
+  width: 100%;
+  margin=0 auto;
+  overflow: hidden;
+}
+
+.container-fluid {
+    background-color: rgb(7, 116, 3);
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;    
+}
+
+
+.col {
+    background-color: rgb(238, 171, 197);
+    border: 2px solid black;
+
+}
+.v-center{
+  display: flex;
+  align-items: center;
+}
