@@ -302,51 +302,43 @@
 
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary" style="text-align: center;">AGREGAR MATERIAS</h6>
+                            <h6 class="m-0 font-weight-bold text-primary" style="text-align: center;">AGREGAR CARRERAS</h6>
                         </div>
                         <div class="card-body">
-                            <div>
+                            <div class="row d-flex justify-content-center">
                                 <form method="POST">
-                                    <input type="number" name="cantidad" id="cantidad" placeholder="  Cantidad Materias" value="cantidad">
+                                    <input type="number" name='cantidad' id='cantidad' placeholder="  Cantidad Carreras" value='cantidad'>
                                     <input type="submit" value="Agregar">
                                 </form>
                             </div>
                             <div class="js">
                                 <script>
-                                    document.getElementById("cantidad").value = valor;
+                                    document.getElementById('cantidad').value = valor;
                                 </script>
                             </div>
-                            <div class="table-responsive">
+                            <div class="row d-flex justify-content-center" style="text-align: center;">
                                 <form action="materias/guardarMateria.php" method="POST" id="frmRegistro">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <table id="tabla" cellspacing="0" style="text-align:center;" border="1">
                                         <tbody style="text-align: center">
                                             <tr class="bg-success">
-                                                <th style="color:#FFFFFF" rowspan="2"><br> Nombre de Materia </th>
-                                                <th style="color:#FFFFFF" colspan="2">Horario</th>
-                                            </tr>
-                                            <tr class="bg-success">
-                                                <th style="color:#FFFFFF">Entrada</th>
-                                                <th style="color:#FFFFFF">Salida</th>
+                                                <th COLSPAN="2" style="color:#FFFFFF"> Nombres de Carreras </th>
                                             </tr>
                                             <?php
-                                            //if (isset($_POST)){
-                                                    $valor = (isset($_POST['cantidad'])?$_POST['cantidad']:1);
-                                                echo '<br>';
-                                                for ($i = 0; $i < $valor; $i++) {
-                                                    echo '
-                                                <tr  class="success">
-                                                    <td><input type="text" required name="nombreMateria" id="nombreMateria" placeholder=" Nombre : ' . $i . '" value="" /> </td>
-                                                    <td><input type="time" required name="entrada" id="entrada" value="" /> </td>
-                                                    <td><input type="time" required name="entrada" id="entrada" value="" /> </td>
-                                                </tr>';
-                                                }                                            
-                                            //}
+                                            $valor = $_POST['cantidad'];
+                                            echo '<br>';
+                                            for ($i = 0; $i < $valor; $i++) {
+                                                echo '
+                                            <tr  class="success">
+                                                <td>  Carrera  : ' . $i .  '  </td>
+                                                <td><input type="text" size="40" required name="nombreCarrera" id="nombreCarrera" placeholder="    ........ " value="" /> </td>
+                                            </tr>';
+                                            }
                                             ?>
 
                                         </tbody>
                                     </table>
                                     <br>
-                                    <center><input class="btn-primary align-items-center" type="submit" id="guardarMateria" value="Guardar Registro"></center>
+                                    <input class="btn-primary align-items-center" type="submit" id="guardarCarrera" value="Guardar">
                                 </form>
                             </div>
                         </div>

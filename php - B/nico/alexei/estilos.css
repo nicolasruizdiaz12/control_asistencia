@@ -1,0 +1,53 @@
+header{
+    display: inline;
+    background-color: #000;
+    text-align: center;
+    color: white;
+    height: 25mm;
+    font-size: 10mm;
+    padding: 1mm;
+
+}
+body{
+    
+    display: grid;
+    background-color: lightgoldenrodyellow;
+    font-family: 'Roboto', sans-serif;
+}
+
+table{
+    border: 1px solid #000;
+}
+#tabla1{
+    display: inline-table;
+    width: 100%;
+    text-align: center;
+    border: 1px solid #000;
+    border-collapse: collapse;
+}
+#tabla2{
+    
+    margin: auto;
+    text-align: center;
+    border: 1px solid #000;
+    border-collapse: collapse;
+}
+#tabla3{
+    
+    margin: auto;
+    text-align: center;
+    border: 1px solid #000;
+    border-collapse: collapse;
+}
+thead th{
+    background-color: lightgrey;
+    color: #000;
+    border: 1px solid #000;
+}
+tr td{
+    border: 1px solid #000;
+    padding: 1mm;
+}
+section{
+    padding-block: 2mm;
+}

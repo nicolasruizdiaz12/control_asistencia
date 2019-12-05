@@ -1,0 +1,58 @@
+
+
+header{
+    border: groove 1em #E8F482;  
+    border-radius: 2em;
+    padding:30px;
+    width: 90%;
+    max-width:1000px;
+    margin:20px auto; 
+    text-align:center;
+    size: 50px;
+    background: #ffffff;
+}
+
+table {
+    border:1px solid #82CEF4;
+    border-collapse: collapse;
+}
+
+table  th {
+    border:1px solid #82CEF4;
+    padding: 15px;
+    background: #B59BBF;
+    color: #ffffff;
+}
+
+.date th{
+    background:#99D8D2;
+    color: #000000; 
+}
+
+table td {
+    text-align: center;
+    padding: 15px;
+}
+
+table tr:hover {
+    background: #81E5E8;
+}
+
+table td:hover{
+    background: #37798A;
+    color: #E7E7E7;
+}
+
+.porce{
+    background: #FAABC5;
+}
+
+.porce tr:hover{
+    background: #37798A;
+    color: #E7E7E7;
+}
+
+.porce td:hover{
+    background: #37798A;
+    color: #E7E7E7;
+}

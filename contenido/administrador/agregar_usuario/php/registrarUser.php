@@ -15,7 +15,7 @@
 		if(buscaUserRepetido($usuario,$password,$conexion)==1){
 			echo 2;
 		}else{
-			$sql="INSERT into usuario (nombre,cuil,fecha,domicilio,email,usuario,password,id_tipo)
+			$sql="INSERT into usuario (nombre,cuil,fecha,domicilio,email,usuario,password,id_tipo_usuario)
 				values ('$nombre','$cuil','$fecha','$domicilio','$email','$usuario','$password','$tipoUsuario')";
 			echo $result=mysqli_query($conexion,$sql);
 		}

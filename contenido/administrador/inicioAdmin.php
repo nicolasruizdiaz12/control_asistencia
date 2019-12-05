@@ -57,8 +57,8 @@ if (isset($_SESSION['usuario'])) {
 				<!-- Nav Item - Dashboard -->
 				<li class="nav-item active">
 					<a class="nav-link" href="inicio.php">
-						<i class="far fa-address-book fa-lg" style="color: #FFFFFF;"></i>
-						<span>Asistencia</span></a>
+						<i class="fas fa-user-tie fa-lg" style="color: #FFFFFF;"></i>
+						<span>Preceptor</span></a>
 				</li>
 
 				<!-- Divider -->
@@ -77,10 +77,10 @@ if (isset($_SESSION['usuario'])) {
 					</a>
 					<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 						<div class="bg-white py-2 collapse-inner rounded">
-							<h6 class="collapse-header">Ejecucion de Alumnos:</h6>
-							<a class="collapse-item" href="agregarAlumno.php">Agregar</a>
-							<a class="collapse-item" href="Lista_Alumnos/modificar.php">Editar</a>
-							<a class="collapse-item" href="Lista_Alumnos/eliminar">Eliminar</a>
+							<h6 class="collapse-header">Datos Institución:</h6>
+							<a class="collapse-item" href="#">Ver</a>
+							<a class="collapse-item" href="#">Editar</a>
+							<a class="collapse-item" href="#">Eliminar</a>
 						</div>
 					</div>
 				</li>
@@ -123,15 +123,15 @@ if (isset($_SESSION['usuario'])) {
 				<!-- Nav Item - Charts -->
 				<li class="nav-item active">
 					<a class="nav-link" target="_blank" href="asistenciaDelDia.php">
-						<i class="far fa-address-card"></i>
-						<span>Registro Asistencia</span></a>
+						<i class="fas fa-chalkboard-teacher"></i> 
+						<span>Profesores</span></a>
 				</li>
 
 				<!-- Nav Item - Tables -->
 				<li class="nav-item">
 					<a class="nav-link" href="listaAlumnos.php">
-						<i class="fas fa-user-graduate" style="color: #FFFFFF;"></i>
-						<span>Alumnos</span></a>
+						<i class="far fa-address-card" style="color: #FFFFFF;"></i>
+						<span>Materias</span></a>
 				</li>
 
 				<!-- Nav Item - Pages Collapse Menu -->
@@ -314,7 +314,18 @@ if (isset($_SESSION['usuario'])) {
 								<li class="nav-item dropdown no-arrow">
 									<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $usuario; ?></span>
-										<img src="img/instituto.png" height="60" width="60">
+										<?php
+										include("notas/conexion.php");
+										$logo = "SELECT * FROM institucion_dato";
+										$resultado = mysqli_query($conexion, $logo);
+										while ($row = $resultado->fetch_assoc()) {
+											if ($row = 1){
+										echo "<img src='datos_institucion/logo/$row[ruta]'height='60' width='60'>";
+								        }else {
+											echo "<img src='datos_institucion/logo/perfil.jpg'height='60' width='60'>";
+										}
+									}
+										?>
 									</a>
 									<!-- Dropdown - User Information -->
 									<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -365,7 +376,7 @@ if (isset($_SESSION['usuario'])) {
 													<div class="h5 mb-0 font-weight-bold text-gray-800">Preceptor</div>
 												</div>
 												<div class="col-auto">
-													<i class="fas fa-user-graduate fa-2x" style="color: #008000;"></i>
+													<i class="fas fa-user-tie fa-2x" style="color: #008000;"></i> 
 												</div>
 											</div>
 										</div>
@@ -411,7 +422,7 @@ if (isset($_SESSION['usuario'])) {
 										<div class="card-body">
 											<div class="row no-gutters align-items-center">
 												<div class="col mr-2">
-													<div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><a href="#">Cargar</a></div>
+													<div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><a href="cargarCarrera.php">Cargar</a></div>
 													<div class="h5 mb-0 font-weight-bold text-gray-800">Carreras</div>
 												</div>
 												<div class="col-auto">
@@ -432,7 +443,7 @@ if (isset($_SESSION['usuario'])) {
 													<div class="h5 mb-0 font-weight-bold text-gray-800">Institución</div>
 												</div>
 												<div class="col-auto">
-													<i class="fas fa-calculator fa-2x" style="color: #008000;"></i>
+													<i class="fas fa-school fa-2x" style="color: #008000;"></i>
 												</div>
 											</div>
 										</div>
@@ -446,10 +457,10 @@ if (isset($_SESSION['usuario'])) {
 											<div class="row no-gutters align-items-center">
 												<div class="col mr-2">
 													<div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><a target="_blank" href="#">Cargar</a></div>
-													<div class="h5 mb-0 font-weight-bold text-gray-800">Notas</div>
+													<div class="h5 mb-0 font-weight-bold text-gray-800">Profesores</div>
 												</div>
 												<div class="col-auto">
-													<i class="fas fa-calculator fa-2x" style="color: #008000;"></i>
+													<i class="fas fa-chalkboard-teacher fa-2x" style="color: #008000;"></i>
 												</div>
 											</div>
 										</div>
@@ -492,7 +503,7 @@ if (isset($_SESSION['usuario'])) {
 
 								<!-- /.container-fluid -->
 
-							</div> <br><br>
+							</div> <br><br><br><br><br><br><br>
 							<!-- End of Main Content -->
 
 							<footer class="sticky-footer bg-white">
