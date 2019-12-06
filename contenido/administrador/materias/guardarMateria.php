@@ -6,9 +6,10 @@ include("conexion.php");
 $nombreMateria= $_POST['nombreMateria'];
 $entrada= $_POST['entrada'];
 $salida= $_POST['salida'];
-$id_carrera = '2';
+$id_carrera = $_POST['id_carrera'];
+$cantidad = $_POST['cantidad'];
 //Se inserta a la BD cada uno de los datos ingresado en el formulario
-$query="INSERT INTO materia(nombre_materia,hora_entrada, hora_salida, id_carrera) VALUES('$nombreMateria','$entrada','$salida', '$id_carrera')";
+$query="INSERT INTO materia(nombre_materia, materia_hora_entrada, materia_hora_salida, id_carrera) VALUES('$nombreMateria','$entrada','$salida', '$id_carrera')";
 $resultado= $conexion->query($query);
 
 if($resultado){

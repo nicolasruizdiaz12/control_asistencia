@@ -305,10 +305,12 @@
                             <h6 class="m-0 font-weight-bold text-primary" style="text-align: center;">AGREGAR MATERIAS</h6>
                         </div>
                         <div class="card-body">
-                            <div>
+                            <div class="cantidadMateria">
                                 <form method="POST">
-                                    <input type="number" name="cantidad" id="cantidad" placeholder="  Cantidad Materias" value="cantidad">
+                                    <p>Materias :
+                                    <input type="number" name="cantidad" id="cantidad" placeholder=" Cantidad " value="cantidad">
                                     <input type="submit" value="Agregar">
+                                    </p>
                                 </form>
                             </div>
                             <div class="js">
@@ -316,8 +318,26 @@
                                     document.getElementById("cantidad").value = valor;
                                 </script>
                             </div>
+
                             <div class="table-responsive">
                                 <form action="materias/guardarMateria.php" method="POST" id="frmRegistro">
+                                    <div class="TipoCarrera">
+
+                                        <p>Carrera :
+                                            <select name="id_carrera" id="id_carrera">
+                                                <option value="0">Selección:</option>
+                                                <?php
+                                                $mysqli = new mysqli('localhost', 'root', '', 'registro_asistencia');
+                                                $query = $mysqli->query("SELECT * FROM carrera");
+
+                                                while ($valores = mysqli_fetch_array($query)) {
+
+                                                    echo '<option value="' . $valores['id_carrera'] . '">' . $valores['nombreCarrera'] . '</option>';
+                                                }
+                                                ?>
+                                            </select>
+                                        </p>
+                                    </div>
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <tbody style="text-align: center">
                                             <tr class="bg-success">
@@ -330,16 +350,16 @@
                                             </tr>
                                             <?php
                                             //if (isset($_POST)){
-                                                    $valor = (isset($_POST['cantidad'])?$_POST['cantidad']:1);
-                                                echo '<br>';
-                                                for ($i = 0; $i < $valor; $i++) {
-                                                    echo '
+                                            $valor = (isset($_POST['cantidad']) ? $_POST['cantidad'] : 1);
+                                            echo '<br>';
+                                            for ($i = 0; $i < $valor; $i++) {
+                                                echo '
                                                 <tr  class="success">
-                                                    <td><input type="text" required name="nombreMateria" id="nombreMateria" placeholder=" Nombre : ' . $i . '" value="" /> </td>
+                                                    <td><input type="text" required name="materia'.$i.'" id="nombreMateria" placeholder=" Nombre : ' . $i . '" value="" /> </td>
                                                     <td><input type="time" required name="entrada" id="entrada" value="" /> </td>
-                                                    <td><input type="time" required name="entrada" id="entrada" value="" /> </td>
+                                                    <td><input type="time" required name="salida" id="salida" value="" /> </td>
                                                 </tr>';
-                                                }                                            
+                                            }
                                             //}
                                             ?>
 
